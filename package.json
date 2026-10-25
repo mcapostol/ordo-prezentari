@@ -6,6 +6,9 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "node scripts/verify.mjs",
-    "package": "python3 scripts/package.py"
+    "package": "python3 scripts/package.py",
+    "verify:live": "node scripts/verify-live.mjs",
+    "pricing:sync": "node scripts/pricing.mjs --write",
+    "pricing:check": "node scripts/pricing.mjs --check"
   }
 }

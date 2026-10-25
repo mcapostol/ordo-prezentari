@@ -13,13 +13,134 @@
     @media(max-width:620px){.wrap{width:min(100% - 28px,1160px)}.topin{height:68px}.portfolio{max-width:94px;padding:8px;text-align:center;font-size:8px}.hero{padding:64px 0 54px}.hero-actions{flex-direction:column}.hero-actions .button{width:100%}.board{margin-top:29px;padding:8px}.dash{grid-template-columns:42px 1fr;min-height:430px}.rail{padding:13px 6px}.rail i{width:20px}.dashmain{padding:18px 11px}.metrics{gap:4px}.metric{padding:10px 7px}.metric b{font-size:18px}.dashgrid{grid-template-columns:1fr}.network{display:none}.section{padding:75px 0}.heading{gap:21px;margin-bottom:37px}.heading h2{font-size:38px}.master,.trace,.stock,.exception,.procure,.need,.finance,.commercial,.portal,.communication,.access,.deploy-panel{padding:27px 22px}.dataflow,.procure-flow{grid-template-columns:1fr}.dataflow div,.procure-flow div{min-height:88px}.dataflow div:not(:last-child):after,.procure-flow div:not(:last-child):after{content:"↓";right:16px}.ledger,.integrations,.channels,.regulated-grid,.deploy-grid{grid-template-columns:1fr}.governance{gap:16px}.foot{align-items:flex-start;flex-direction:column}}
     @media(max-width:350px){h1{font-size:44px}.word strong{font-size:16px}.word small{font-size:6px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{display:none}}
     @media print{@page{size:A4;margin:12mm}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}html{scroll-behavior:auto}body{background:#fff;font-size:10pt;zoom:.75}.top{position:static;background:#fff}.topin{height:54px}.nav,.portfolio,.hero-actions,.deploy-tabs,.skip,.footlinks{display:none!important}.wrap{width:100%}.hero{padding:20px 0}.hero-grid{grid-template-columns:.9fr 1.1fr;gap:25px}.board{box-shadow:none;transform:none}.dash{min-height:355px}.section{padding:12mm 0}.heading{grid-template-columns:1fr .72fr;gap:32px;align-items:end;margin-bottom:8mm}.catalog-grid{grid-template-columns:1.1fr .9fr}.stock-grid{grid-template-columns:1.12fr .88fr}.stock{grid-row:span 2}.order-grid{grid-template-columns:1.2fr .8fr}.finance-grid{grid-template-columns:1fr 1fr}.relationship{grid-template-columns:.82fr 1.18fr}.governance{grid-template-columns:.8fr 1.2fr}.deploy-panel{grid-template-columns:.8fr 1.2fr}.dataflow{grid-template-columns:repeat(4,1fr)}.procure-flow{grid-template-columns:repeat(5,1fr)}.integrations,.channels{grid-template-columns:repeat(3,1fr)}.regulated-grid,.deploy-grid{grid-template-columns:1fr 1fr}.master,.trace,.stock,.exception,.procure,.need,.finance,.commercial,.portal,.communication,.access,.deploy-panel{padding:24px}.master>p,.stock>p,.procure>p,.finance>p,.access>p,.trace p,.exception p,.need p,.portal p,.communication>p,.regulated>p,.deploy p{font-size:8pt}.deploy-panel,.deploy-panel[hidden]{display:grid!important;break-inside:avoid;margin-bottom:7mm}.mode{display:none}.print-only{display:block}#stoc,#financiar,#guvernanta,#livrare{break-before:page}.catalog-grid,.stock-grid,.order-grid,.finance-grid,.relationship,.governance,.deploy-panel{break-inside:avoid}.footer{padding:17px 0}}
-  </style>
+  /* ORDO_PRICING_CSS_START */
+    .op-price-jump { display: inline-flex; align-items: center; margin-top: 16px; padding: 9px 12px; border: 1px solid #d7e3e9; border-radius: 9px; color: #234f84; background: #f4fafc; font-size: 10px; font-weight: 850; text-decoration: none; }
+    .op-price-jump:hover { border-color: #00a79d; color: #173b66; }
+    .op-price-jump:focus-visible { outline: 3px solid #00a79d; outline-offset: 3px; }
+    .ordo-pricing {
+      --op-primary: #234f84;
+      --op-primary-2: #173b66;
+      --op-accent: #00a79d;
+      --op-tint: #f4fafc;
+      --op-ink: #172c45;
+      --op-muted: #66768a;
+      --op-line: #d7e3e9;
+      padding: 94px 0;
+      color: var(--op-ink);
+      background: var(--op-tint);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    .ordo-pricing *, .ordo-pricing *::before, .ordo-pricing *::after { box-sizing: border-box; }
+    .ordo-pricing .op-shell { width: min(1160px, calc(100% - 42px)); margin: 0 auto; }
+    .ordo-pricing .op-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 36px; margin-bottom: 34px; }
+    .ordo-pricing .op-heading > div { max-width: 760px; min-width: 0; }
+    .ordo-pricing .op-eyebrow { margin: 0 0 10px; color: var(--op-accent); font-size: 9px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .ordo-pricing h2, .ordo-pricing h3, .ordo-pricing p { margin-top: 0; }
+    .ordo-pricing h2 { margin-bottom: 12px; color: var(--op-primary); font-size: clamp(36px, 4.7vw, 58px); line-height: 1.02; letter-spacing: -.05em; }
+    .ordo-pricing .op-heading p:last-child { max-width: 700px; margin-bottom: 0; color: var(--op-muted); font-size: 14px; }
+    .ordo-pricing .op-label { padding: 8px 11px; border: 1px solid var(--op-line); border-radius: 999px; color: var(--op-muted); background: #fff; font-size: 9px; font-weight: 850; white-space: nowrap; }
+    .ordo-pricing .op-saas-head { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-bottom: 13px; }
+    .ordo-pricing .op-saas-head > div { display: flex; align-items: center; gap: 9px; color: var(--op-primary); }
+    .ordo-pricing .op-saas-head p { max-width: 580px; margin: 0; color: var(--op-muted); font-size: 11px; text-align: right; }
+    .ordo-pricing .op-number { display: inline-grid; width: 25px; height: 25px; place-items: center; border-radius: 7px; color: var(--op-primary); background: color-mix(in srgb, var(--op-accent) 25%, white); font-size: 8px; font-weight: 900; }
+    .ordo-pricing .op-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .ordo-pricing .op-plan { min-width: 0; padding: 21px; border: 1px solid var(--op-line); border-radius: 18px; background: #fff; box-shadow: 0 9px 26px color-mix(in srgb, var(--op-primary) 9%, transparent); }
+    .ordo-pricing .op-plan-featured { border-top: 5px solid var(--op-accent); padding-top: 17px; }
+    .ordo-pricing .op-plan-head { min-height: 26px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .ordo-pricing .op-plan-name { color: var(--op-primary); font-size: 16px; font-weight: 900; }
+    .ordo-pricing .op-plan-tag { padding: 4px 6px; border-radius: 999px; color: var(--op-primary); background: color-mix(in srgb, var(--op-accent) 20%, white); font-size: 7px; font-weight: 900; white-space: nowrap; }
+    .ordo-pricing .op-scope { min-height: 42px; margin: 7px 0 11px; color: var(--op-muted); font-size: 12px; }
+    .ordo-pricing .op-price strong { display: block; color: var(--op-primary); font-size: clamp(25px, 2.8vw, 34px); line-height: 1; letter-spacing: -.045em; }
+    .ordo-pricing .op-price span { display: block; margin-top: 5px; color: var(--op-muted); font-size: 10px; }
+    .ordo-pricing .op-setup { margin: 12px 0; padding: 9px; border-radius: 9px; color: var(--op-muted); background: var(--op-tint); font-size: 11px; }
+    .ordo-pricing .op-setup b { color: var(--op-primary); }
+    .ordo-pricing .op-allowances { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .ordo-pricing .op-allowances li { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--op-line); font-size: 11px; }
+    .ordo-pricing .op-allowances li:last-child { border: 0; }
+    .ordo-pricing .op-allowances span { color: var(--op-muted); }
+    .ordo-pricing .op-allowances b { color: var(--op-primary); text-align: right; }
+    .ordo-pricing .op-onprem { display: grid; grid-template-columns: .83fr 1.17fr; gap: 24px; margin-top: 14px; padding: 22px; border-radius: 18px; color: #fff; background: var(--op-primary); }
+    .ordo-pricing .op-onprem-intro .op-number { margin-bottom: 12px; }
+    .ordo-pricing .op-onprem-intro .op-eyebrow { color: #fff; }
+    .ordo-pricing .op-onprem-intro h3 { margin-bottom: 7px; color: #fff; font-size: 25px; letter-spacing: -.035em; }
+    .ordo-pricing .op-onprem-intro > p:last-child { margin: 0; color: rgba(255,255,255,.82); font-size: 12px; }
+    .ordo-pricing .op-onprem-prices { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; }
+    .ordo-pricing .op-total { display: flex; flex-direction: column; justify-content: center; padding: 15px; border: 1px solid color-mix(in srgb, var(--op-accent) 50%, transparent); border-radius: 12px; background: color-mix(in srgb, var(--op-accent) 13%, transparent); }
+    .ordo-pricing .op-total span, .ordo-pricing .op-total small { color: rgba(255,255,255,.72); font-size: 7px; }
+    .ordo-pricing .op-total strong { margin: 6px 0; color: #fff; font-size: 22px; letter-spacing: -.035em; }
+    .ordo-pricing dl { margin: 0; }
+    .ordo-pricing dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,.11); font-size: 11px; }
+    .ordo-pricing dl div:last-child { border: 0; }
+    .ordo-pricing dt { color: rgba(255,255,255,.67); }
+    .ordo-pricing dd { margin: 0; color: #fff; font-weight: 850; text-align: right; }
+    .ordo-pricing .op-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .ordo-pricing .op-notes p { margin: 0; padding: 10px 12px; border: 1px solid var(--op-line); border-radius: 11px; color: var(--op-muted); background: #fff; font-size: 11px; }
+    .ordo-pricing .op-notes strong { color: var(--op-primary); }
+    .ordo-pricing .op-commercial { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 16px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--op-line); }
+    .ordo-pricing .op-commercial p, .ordo-pricing .op-commercial strong { margin: 0; color: var(--op-muted); font-size: 10px; }
+    .ordo-pricing .op-commercial strong { color: var(--op-primary); text-align: right; }
+    @media (max-width: 760px) {
+      .ordo-pricing { padding: 68px 0; }
+      .ordo-pricing .op-shell { width: min(100% - 28px, 1160px); }
+      .ordo-pricing .op-heading { grid-template-columns: 1fr; align-items: start; gap: 13px; }
+      .ordo-pricing h2 { overflow-wrap: anywhere; font-size: clamp(29px, 10vw, 42px); }
+      .ordo-pricing .op-label { white-space: normal; }
+      .ordo-pricing .op-saas-head { align-items: flex-start; flex-direction: column; }
+      .ordo-pricing .op-saas-head p { text-align: left; }
+      .ordo-pricing .op-plans, .ordo-pricing .op-onprem, .ordo-pricing .op-onprem-prices, .ordo-pricing .op-notes, .ordo-pricing .op-commercial { grid-template-columns: 1fr; }
+      .ordo-pricing .op-scope { min-height: 0; }
+      .ordo-pricing .op-commercial strong { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ordo-pricing *, .ordo-pricing *::before, .ordo-pricing *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      .ordo-pricing { min-height: 0; display: block; break-before: page; break-after: auto; padding: 5mm 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      body > footer { display: none !important; }
+      .op-price-jump { display: none !important; }
+      .ordo-pricing .op-shell { width: 100%; }
+      .ordo-pricing .op-commercial { display: grid !important; }
+      .ordo-pricing .op-heading { grid-template-columns: 1fr auto; gap: 12px; margin-bottom: 9px; }
+      .ordo-pricing h2 { margin-bottom: 4px; font-size: 19pt; }
+      .ordo-pricing .op-heading p:last-child { font-size: 7pt; }
+      .ordo-pricing .op-label { padding: 4px 6px; font-size: 6pt; }
+      .ordo-pricing .op-saas-head { margin-bottom: 5px; }
+      .ordo-pricing .op-saas-head p { font-size: 6pt; }
+      .ordo-pricing .op-number { width: 18px; height: 18px; font-size: 7pt; }
+      .ordo-pricing .op-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .ordo-pricing .op-plan { break-inside: avoid; padding: 9px; border-radius: 10px; box-shadow: none; }
+      .ordo-pricing .op-plan-featured { padding-top: 6px; border-top-width: 4px; }
+      .ordo-pricing .op-plan-head { min-height: 17px; }
+      .ordo-pricing .op-plan-name { font-size: 9pt; }
+      .ordo-pricing .op-plan-tag { font-size: 6.5pt; }
+      .ordo-pricing .op-scope { min-height: 26px; margin: 3px 0 5px; font-size: 6pt; }
+      .ordo-pricing .op-price strong { font-size: 15pt; }
+      .ordo-pricing .op-price span, .ordo-pricing .op-setup { font-size: 7pt; }
+      .ordo-pricing .op-setup { margin: 5px 0; padding: 5px; }
+      .ordo-pricing .op-allowances li { padding: 3px 0; font-size: 7pt; }
+      .ordo-pricing .op-onprem { break-inside: avoid; grid-template-columns: .78fr 1.22fr; gap: 8px; margin-top: 6px; padding: 9px; border-radius: 10px; }
+      .ordo-pricing .op-onprem-intro .op-number { margin-bottom: 4px; }
+      .ordo-pricing .op-onprem-intro h3 { margin-bottom: 3px; font-size: 12pt; }
+      .ordo-pricing .op-onprem-intro > p:last-child { font-size: 7pt; }
+      .ordo-pricing .op-onprem-prices { gap: 6px; }
+      .ordo-pricing .op-total { padding: 7px; }
+      .ordo-pricing .op-total strong { margin: 3px 0; font-size: 11pt; }
+      .ordo-pricing .op-total span, .ordo-pricing .op-total small, .ordo-pricing dl div { font-size: 6.5pt; }
+      .ordo-pricing dl div { padding: 2px 0; }
+      .ordo-pricing .op-notes { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 5px; }
+      .ordo-pricing .op-notes p { padding: 5px; font-size: 6.8pt; }
+      .ordo-pricing .op-commercial { grid-template-columns: 1.3fr .7fr; gap: 7px; margin-top: 5px; padding-top: 5px; }
+      .ordo-pricing .op-commercial p, .ordo-pricing .op-commercial strong { font-size: 6.5pt; }
+    }
+/* ORDO_PRICING_CSS_END */
+</style>
 </head>
 <body>
   <a class="skip" href="#continut">Sari la conținut</a>
   <header class="top"><div class="wrap topin"><a class="brand" href="#acasa" aria-label="OrdoFarm, Powered by Clarified"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Simbol OrdoFarm"><rect width="48" height="48" rx="13" fill="#234F84"/><path d="M14 29 28 15c3-3 8-3 11 0s3 8 0 11L25 40c-3 3-8 3-11 0s-3-8 0-11Z" fill="none" stroke="#F4FAFC" stroke-width="2.8"/><path d="m20 23 13 13" stroke="#00A79D" stroke-width="3.2" stroke-linecap="round"/><circle cx="16" cy="16" r="4" fill="#00A79D"/></svg><span class="word"><strong>OrdoFarm</strong><small>Powered by Clarified</small></span></a><nav class="nav" aria-label="Navigație"><a href="#catalog">Catalog</a><a href="#stoc">Stoc</a><a href="#retea">Rețea</a><a href="#guvernanta">Integrări</a><a href="#livrare">Livrare</a></nav><a class="portfolio" href="index.html">← Portofoliu produse</a></div></header>
   <main id="continut">
-    <section class="hero" id="acasa"><div class="wrap hero-grid"><div><span class="kicker">Operațiuni farmaceutice conectate</span><h1>Stocul potrivit.<br><em>În locul potrivit.</em></h1><p class="lead">OrdoFarm este conceptul unei platforme pentru farmacii și lanțuri: catalog, loturi, aprovizionare, echipe, clienți și control comercial într-o perspectivă comună.</p><span class="concept">Concept de produs · Prezentare</span><div class="hero-actions"><a class="button primary" href="#catalog">Explorează conceptul</a><a class="button secondary" href="#livrare">Compară livrarea</a></div></div><div class="board" aria-label="Tablou operațional cu date ilustrative"><span class="board-label">Date ilustrative</span><div class="dash"><aside class="rail"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4FAFC"/><path d="M14 29 28 15c3-3 8-3 11 0s3 8 0 11L25 40c-3 3-8 3-11 0s-3-8 0-11Z" fill="none" stroke="#234F84" stroke-width="2.8"/><path d="m20 23 13 13" stroke="#00A79D" stroke-width="3.2"/><circle cx="16" cy="16" r="4" fill="#00A79D"/></svg><i class="on"></i><i></i><i></i><i></i></aside><div class="dashmain"><div class="dashhead"><div><small>Rețeaua Ordo · astăzi</small><strong>Control stoc și loturi</strong></div><span class="avatar">FM</span></div><div class="metrics"><article class="metric"><small>Produse active</small><b>3.842</b><span>valoare ilustrativă</span></article><article class="metric"><small>Loturi urmărite</small><b>126</b><span>valoare ilustrativă</span></article><article class="metric"><small>Cereri în lucru</small><b>11</b><span>valoare ilustrativă</span></article></div><div class="dashgrid"><article class="expiry"><h3>Priorități FEFO</h3><div class="lot"><div><b>Lot AL-024</b><small>Farmacia Centrală</small></div><span>42 zile</span></div><div class="lot"><div><b>Lot BX-118</b><small>Farmacia Nord</small></div><span>67 zile</span></div><div class="lot"><div><b>Lot CM-403</b><small>Farmacia Vest</small></div><span>91 zile</span></div></article><article class="network"><h3>Rețea</h3><div class="nodes"><i class="node hub">C</i><i class="node a">01</i><i class="node b">02</i><i class="node c">03</i></div><p>Centrală și farmacii conectate · exemplu vizual</p></article></div></div></div></div></div></section>
+    <section class="hero" id="acasa"><div class="wrap hero-grid"><div><span class="kicker">Operațiuni farmaceutice conectate</span><h1>Stocul potrivit.<br><em>În locul potrivit.</em></h1><p class="lead">OrdoFarm este conceptul unei platforme pentru farmacii și lanțuri: catalog, loturi, aprovizionare, echipe, clienți și control comercial într-o perspectivă comună.</p><a class="op-price-jump" href="#tarife">Vezi pachetele și tarifele ↓</a><span class="concept">Concept de produs · Prezentare</span><div class="hero-actions"><a class="button primary" href="#catalog">Explorează conceptul</a><a class="button secondary" href="#livrare">Compară livrarea</a></div></div><div class="board" aria-label="Tablou operațional cu date ilustrative"><span class="board-label">Date ilustrative</span><div class="dash"><aside class="rail"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4FAFC"/><path d="M14 29 28 15c3-3 8-3 11 0s3 8 0 11L25 40c-3 3-8 3-11 0s-3-8 0-11Z" fill="none" stroke="#234F84" stroke-width="2.8"/><path d="m20 23 13 13" stroke="#00A79D" stroke-width="3.2"/><circle cx="16" cy="16" r="4" fill="#00A79D"/></svg><i class="on"></i><i></i><i></i><i></i></aside><div class="dashmain"><div class="dashhead"><div><small>Rețeaua Ordo · astăzi</small><strong>Control stoc și loturi</strong></div><span class="avatar">FM</span></div><div class="metrics"><article class="metric"><small>Produse active</small><b>3.842</b><span>valoare ilustrativă</span></article><article class="metric"><small>Loturi urmărite</small><b>126</b><span>valoare ilustrativă</span></article><article class="metric"><small>Cereri în lucru</small><b>11</b><span>valoare ilustrativă</span></article></div><div class="dashgrid"><article class="expiry"><h3>Priorități FEFO</h3><div class="lot"><div><b>Lot AL-024</b><small>Farmacia Centrală</small></div><span>42 zile</span></div><div class="lot"><div><b>Lot BX-118</b><small>Farmacia Nord</small></div><span>67 zile</span></div><div class="lot"><div><b>Lot CM-403</b><small>Farmacia Vest</small></div><span>91 zile</span></div></article><article class="network"><h3>Rețea</h3><div class="nodes"><i class="node hub">C</i><i class="node a">01</i><i class="node b">02</i><i class="node c">03</i></div><p>Centrală și farmacii conectate · exemplu vizual</p></article></div></div></div></div></div></section>
 
     <section class="section alt" id="catalog"><div class="wrap"><div class="heading"><div><span class="eyebrow">01 / Catalog și trasabilitate</span><h2>Un produs clar.<br><em>Fiecare lot în context.</em></h2></div><p>Modelul propus separă datele stabile ale produsului de informația variabilă a lotului și de stocul fiecărei farmacii.</p></div><div class="catalog-grid"><article class="master"><h3>Catalog operațional unic</h3><p>GTIN, denumire, categorie, prezentare, furnizor și atribute comerciale pot alimenta aceleași fluxuri în întreaga rețea.</p><div class="dataflow"><div><span>01</span><b>Produs &amp; GTIN</b></div><div><span>02</span><b>Lot &amp; termen</b></div><div><span>03</span><b>Farmacie &amp; stoc</b></div><div><span>04</span><b>Mișcare &amp; document</b></div></div></article><article class="trace"><h3>Loturi și FEFO</h3><p>Prioritizarea după termenul de expirare poate susține pregătirea operațională, cu decizia păstrată la utilizatorul autorizat.</p><div class="trace-list"><div><span>GTIN</span><b>Identificare în catalog<small>Atribute controlate și căutare</small></b></div><div><span>LOT</span><b>Recepție și localizare<small>Cantitate, termen, farmacie</small></b></div><div><span>FEFO</span><b>Semnalare operațională<small>Prioritate după termenul de expirare</small></b></div><div><span>AUDIT</span><b>Istoric al mișcărilor<small>Utilizator, moment, document</small></b></div></div></article></div></div></section>
 
@@ -34,7 +155,102 @@
     <section class="section" id="guvernanta"><div class="wrap"><div class="heading"><div><span class="eyebrow">06 / Guvernanță și integrări reglementate</span><h2>Accesul urmează rolul.<br><em>Integrarea urmează validarea.</em></h2></div><p>Organizația, farmacia și rolul profesional definesc accesul. Conectorii către sisteme reglementate rămân propuneri supuse evaluării.</p></div><div class="governance"><article class="access"><h3>Responsabilități separate</h3><p>Administratorul organizației gestionează utilizatori și farmacii. Rolurile profesionale sensibile sunt atribuite numai persoanelor autorizate.</p><div class="role-row"><span>Farmacist autorizat</span><span>Manager farmacie</span><span>Achiziții</span><span>Gestiune</span><span>Financiar</span><span>Administrator organizație</span></div><p class="access-note">Admin/Dev furnizor sunt roluri tehnice distincte, invizibile clienților. Microsoft 365 și Entra ID pot susține SSO după configurarea tenantului și a regulilor interne.</p></article><div class="regulated"><p>Orice conectare depinde de acces, contracte, specificații actuale și validarea furnizorului ori a organismului responsabil.</p><div class="regulated-grid"><article class="regulated-card"><b>SNVM / serializare</b><span>Integrare de evaluat. Conectarea farmaciei ar necesita furnizor software validat/înregistrat și condițiile specifice aplicabile.</span></article><article class="regulated-card"><b>CNAS / SIUI</b><span>Integrare de evaluat, în funcție de drepturile de acces, contracte și cerințele sistemului responsabil.</span></article><article class="regulated-card"><b>Prescripție electronică</b><span>Conector propus, cu acces și fluxuri validate împreună cu farmacia și sistemul responsabil.</span></article><article class="regulated-card"><b>Microsoft 365 / Entra ID</b><span>Identitate organizațională și SSO configurabil, cu autorizare internă pe tenant și rol.</span></article></div><p class="regulated-note">Activarea conectorilor include verificarea accesului, configurarea și validarea circuitelor specifice.</p></div></div></div></section>
 
     <section class="section alt" id="livrare"><div class="wrap"><div class="heading"><div><span class="eyebrow">07 / Modele de livrare</span><h2>Același nucleu.<br><em>Două regimuri de operare.</em></h2></div><p>Modulele contractate rămân aceleași. Implementarea, migrarea, volumele de comunicare și integrările se stabilesc prin evaluare și ofertă.</p></div><div class="deploy-tabs" role="group" aria-label="Alege modelul de livrare"><button class="mode" type="button" data-mode="saas" aria-pressed="true">SaaS</button><button class="mode" type="button" data-mode="onprem" aria-pressed="false">On-Premise</button></div><article class="deploy deploy-panel" data-mode-panel="saas"><div><span class="eyebrow">SaaS</span><h3>Serviciu administrat pentru rețea.</h3><p>Ofertare pentru 1 farmacie, 2–3 farmacii sau 4–6 farmacii. Rețelele extinse primesc configurație și ofertă dedicate.</p></div><div class="deploy-grid"><div class="deploy-card"><span>FURNIZOR</span><b>Găzduire și actualizări</b><p>Operarea tehnică urmează contractul și nivelul de serviciu agreat.</p></div><div class="deploy-card"><span>ORGANIZAȚIE</span><b>Date, utilizatori și procese</b><p>Clientul gestionează conținutul, rolurile și procedurile sale.</p></div><div class="deploy-card"><span>COMUNICARE</span><b>Volume contractuale</b><p>SMS, WhatsApp și e-mail conform pachetului și furnizorilor activați.</p></div><div class="deploy-card"><span>COMERCIAL</span><b>Abonament și implementare</b><p>Preț stabilit prin ofertare.</p></div></div></article><article class="deploy deploy-panel" data-mode-panel="onprem" hidden><div><span class="eyebrow">On-Premise</span><h3>Platforma rulează în infrastructura clientului.</h3><p>Aceleași module contractate, cu licență, implementare și mentenanță. Mediul Microsoft și infrastructura sunt asigurate de client.</p></div><div class="deploy-grid"><div class="deploy-card"><span>CLIENT</span><b>Infrastructură și backup</b><p>Organizația asigură mediul, rețeaua, monitorizarea și continuitatea datelor.</p></div><div class="deploy-card"><span>FURNIZOR</span><b>Instalare și mentenanță</b><p>Actualizările și suportul urmează ferestrele contractate.</p></div><div class="deploy-card"><span>MICROSOFT</span><b>Tenant și licențe proprii</b><p>Entra ID și licențele necesare rămân în responsabilitatea clientului.</p></div><div class="deploy-card"><span>COMERCIAL</span><b>Licență + implementare + mentenanță</b><p>Preț stabilit prin ofertare; adaptările se cotează separat.</p></div></div></article><p class="print-only">Versiunea tipărită prezintă ambele regimuri de livrare.</p></div></section>
-  </main>
+  <!-- ORDO_PRICING_START -->
+  <section class="ordo-pricing op-theme-farm" id="tarife" aria-labelledby="tarife-heading">
+    <div class="op-shell">
+      <header class="op-heading">
+        <div>
+          <p class="op-eyebrow">Ofertă comercială propusă · 2026-10-25</p>
+          <h2 id="tarife-heading">Tarife clare pentru OrdoFarm.</h2>
+          <p>Catalog, loturi și termene, FEFO, stoc, aprovizionare, transferuri, excepții, financiar managerial și audit pe rețea.</p>
+        </div>
+        <span class="op-label">Intervale orientative · EUR, fără TVA</span>
+      </header>
+
+      <div class="op-saas-head">
+        <div><span class="op-number">01</span><strong>SaaS administrat · farmacii</strong></div>
+        <p>Găzduirea, actualizările și backupul sunt incluse în limitele și responsabilitățile contractate.</p>
+      </div>
+      <div class="op-plans">
+
+        <article class="op-plan">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Starter</span>
+
+          </div>
+          <p class="op-scope">1 farmacie</p>
+          <div class="op-price"><strong>149–249 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>990–1.490 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>100 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>150 Utility / lună</b></li>
+            <li><span>Email</span><b>2.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>45 min / lună</b></li>
+          </ul>
+        </article>
+        <article class="op-plan op-plan-featured">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Growth</span>
+            <span class="op-plan-tag">Echilibru operațional</span>
+          </div>
+          <p class="op-scope">2–3 farmacii</p>
+          <div class="op-price"><strong>399–649 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>2.490–3.990 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>400 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>500 Utility / lună</b></li>
+            <li><span>Email</span><b>6.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>90 min / lună</b></li>
+          </ul>
+        </article>
+        <article class="op-plan">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Network</span>
+
+          </div>
+          <p class="op-scope">4–6 farmacii</p>
+          <div class="op-price"><strong>799–1.299 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>4.990–7.990 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>1.000 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>1.200 Utility / lună</b></li>
+            <li><span>Email</span><b>15.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>180 min / lună</b></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="op-onprem">
+        <div class="op-onprem-intro">
+          <span class="op-number">02</span>
+          <p class="op-eyebrow">Instalare în infrastructura clientului</p>
+          <h3>On‑Premise</h3>
+          <p>O organizație, până la 3 farmacii; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft, echipamentele, consumul furnizorilor și accesul la sisteme reglementate nu sunt incluse.</p>
+        </div>
+        <div class="op-onprem-prices">
+          <div class="op-total"><span>Investiție inițială totală</span><strong>14.800–26.800 €</strong><small>licență + implementare, o singură dată</small></div>
+          <dl>
+            <div><dt>Licență</dt><dd>9.900–16.900 €</dd></div>
+            <div><dt>Implementare</dt><dd>4.900–9.900 €</dd></div>
+            <div><dt>Mentenanță</dt><dd>249–499 € / lună</dd></div>
+            <div><dt>Echivalent anual mentenanță</dt><dd>2.988–5.988 € / an</dd></div>
+            <div><dt>Suport inclus</dt><dd>120 min / lună</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="op-notes">
+        <p><strong>Comunicare inclusă în SaaS.</strong> Cotele sunt lunare, comune organizației și nu se reportează. SMS se contorizează pe segmente; WhatsApp include doar mesaje Utility, fără Marketing; depășirea necesită un buget suplimentar agreat. Este inclus un profil de expeditor per organizație, după aprobarea și configurarea furnizorului.</p>
+        <p><strong>Perimetru separat.</strong> În On‑Premise, infrastructura clientului, Microsoft 365 și consumul furnizorilor sunt separate. Migrările complexe, dezvoltările, conectorii personalizați sau reglementați se ofertează distinct. Rețelele de la 7 farmacii, POS/ERP, senzori, migrarea loturilor și conectorii SNVM, CNAS/SIUI ori prescripție electronică necesită acces validat și ofertă separată.</p>
+      </div>
+      <footer class="op-commercial">
+        <p>Intervale orientative în EUR, fără TVA, pentru totalul organizației și pachetului ales. Oferta finală confirmă migrarea, integrările, volumele și serviciile contractate. Suportul suplimentar și dezvoltările se cotează separat.</p>
+        <strong>Oferta finală confirmă perimetrul, volumele, responsabilitățile și calendarul de implementare.</strong>
+      </footer>
+    </div>
+  </section>
+<!-- ORDO_PRICING_END -->
+</main>
   <footer class="footer"><div class="wrap foot"><a class="brand" href="#acasa"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4FAFC"/><path d="M14 29 28 15c3-3 8-3 11 0s3 8 0 11L25 40c-3 3-8 3-11 0s-3-8 0-11Z" fill="none" stroke="#234F84" stroke-width="2.8"/><path d="m20 23 13 13" stroke="#00A79D" stroke-width="3.2"/><circle cx="16" cy="16" r="4" fill="#00A79D"/></svg><span class="word"><strong style="color:#fff">OrdoFarm</strong><small>Powered by Clarified</small></span></a><small>Concept de produs · Exemple de interfață cu date ilustrative</small><div class="footlinks"><a href="index.html">Portofoliu produse</a><a href="#acasa">Revezi conceptul ↑</a></div></div></footer>
   <script>
     (()=>{const key='ordo-farm-delivery-mode',buttons=[...document.querySelectorAll('[data-mode]')],panels=[...document.querySelectorAll('[data-mode-panel]')];let selected='saas';try{const saved=localStorage.getItem(key);if(['saas','onprem'].includes(saved))selected=saved}catch{}const apply=mode=>{selected=mode;buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===mode)));panels.forEach(panel=>panel.hidden=panel.dataset.modePanel!==mode);try{localStorage.setItem(key,mode)}catch{}};buttons.forEach(button=>button.addEventListener('click',()=>apply(button.dataset.mode)));apply(selected)})();

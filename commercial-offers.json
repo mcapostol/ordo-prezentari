@@ -1,0 +1,385 @@
+{
+  "version": 1,
+  "currency": "EUR",
+  "vatIncluded": false,
+  "asOf": "2026-10-25",
+  "status": "proposal",
+  "commercialNote": "Intervale orientative în EUR, fără TVA, pentru totalul organizației și pachetului ales. Oferta finală confirmă migrarea, integrările, volumele și serviciile contractate. Suportul suplimentar și dezvoltările se cotează separat.",
+  "products": {
+    "salons": {
+      "brand": "OrdoSalons",
+      "unitLabel": "saloane și puncte de lucru",
+      "scopeNote": "Programări, clienți, echipă, servicii, consumabile, financiar managerial și coordonare între locații.",
+      "saas": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "scope": "1 salon",
+          "monthly": [
+            79,
+            119
+          ],
+          "setup": [
+            290,
+            490
+          ],
+          "smsSegments": 100,
+          "whatsappUtility": 200,
+          "emails": 2000,
+          "supportMinutes": 30
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "scope": "2–3 saloane",
+          "monthly": [
+            199,
+            299
+          ],
+          "setup": [
+            690,
+            990
+          ],
+          "smsSegments": 300,
+          "whatsappUtility": 600,
+          "emails": 6000,
+          "supportMinutes": 60
+        },
+        {
+          "id": "network",
+          "name": "Network",
+          "scope": "4–6 saloane",
+          "monthly": [
+            399,
+            599
+          ],
+          "setup": [
+            1290,
+            1990
+          ],
+          "smsSegments": 700,
+          "whatsappUtility": 1500,
+          "emails": 15000,
+          "supportMinutes": 120
+        }
+      ],
+      "onPrem": {
+        "scope": "O organizație, până la 3 saloane; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft și consumul furnizorilor de comunicare nu sunt incluse.",
+        "license": [
+          3900,
+          5900
+        ],
+        "implementation": [
+          1490,
+          2490
+        ],
+        "maintenanceMonthly": [
+          99,
+          179
+        ],
+        "supportMinutes": 60
+      },
+      "extraScope": "Rețelele de la 7 locații, migrarea complexă, site-ul ori aplicația de marcă și conectorii personalizați se ofertează separat."
+    },
+    "clubs": {
+      "brand": "OrdoClubs",
+      "unitLabel": "cluburi și locații sportive",
+      "scopeNote": "Membri, abonamente, clase, acces, antrenori, consumuri, financiar managerial și operațiuni multi-locație.",
+      "saas": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "scope": "1 club, maximum 300 de membri activi",
+          "monthly": [
+            99,
+            149
+          ],
+          "setup": [
+            390,
+            590
+          ],
+          "smsSegments": 150,
+          "whatsappUtility": 250,
+          "emails": 2500,
+          "supportMinutes": 30
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "scope": "2–3 cluburi, maximum 1.500 de membri activi în total",
+          "monthly": [
+            249,
+            399
+          ],
+          "setup": [
+            790,
+            1190
+          ],
+          "smsSegments": 500,
+          "whatsappUtility": 800,
+          "emails": 8000,
+          "supportMinutes": 60
+        },
+        {
+          "id": "network",
+          "name": "Network",
+          "scope": "4–6 cluburi, maximum 5.000 de membri activi în total",
+          "monthly": [
+            499,
+            749
+          ],
+          "setup": [
+            1490,
+            2490
+          ],
+          "smsSegments": 1200,
+          "whatsappUtility": 2000,
+          "emails": 20000,
+          "supportMinutes": 120
+        }
+      ],
+      "onPrem": {
+        "scope": "O organizație, până la 3 cluburi și 1.500 de membri activi; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft, controlul fizic al accesului și consumul furnizorilor nu sunt incluse.",
+        "license": [
+          4900,
+          7900
+        ],
+        "implementation": [
+          1990,
+          3490
+        ],
+        "maintenanceMonthly": [
+          129,
+          229
+        ],
+        "supportMinutes": 90
+      },
+      "extraScope": "Peste 6 cluburi ori 5.000 de membri, echipamentele de acces, migrarea plăților și conectorii de procesare se evaluează și se ofertează separat."
+    },
+    "rezidential": {
+      "brand": "OrdoRezidential",
+      "unitLabel": "complexe rezidențiale și unități",
+      "scopeNote": "Unități, proprietari și chiriași, predări, garanții, intervenții, furnizori, documente și raportare de portofoliu.",
+      "saas": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "scope": "1 complex rezidențial, maximum 100 de unități",
+          "monthly": [
+            149,
+            249
+          ],
+          "setup": [
+            690,
+            1190
+          ],
+          "smsSegments": 200,
+          "whatsappUtility": 250,
+          "emails": 3000,
+          "supportMinutes": 45
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "scope": "Până la 3 complexe, maximum 500 de unități în total",
+          "monthly": [
+            349,
+            599
+          ],
+          "setup": [
+            1490,
+            2490
+          ],
+          "smsSegments": 700,
+          "whatsappUtility": 800,
+          "emails": 10000,
+          "supportMinutes": 90
+        },
+        {
+          "id": "network",
+          "name": "Network",
+          "scope": "Până la 6 complexe, maximum 1.500 de unități în total",
+          "monthly": [
+            699,
+            1099
+          ],
+          "setup": [
+            2990,
+            4990
+          ],
+          "smsSegments": 1800,
+          "whatsappUtility": 2000,
+          "emails": 25000,
+          "supportMinutes": 180
+        }
+      ],
+      "onPrem": {
+        "scope": "O organizație, până la 3 complexe și 500 de unități; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft și consumul furnizorilor de comunicare sau plăți nu sunt incluse.",
+        "license": [
+          7900,
+          12900
+        ],
+        "implementation": [
+          3490,
+          6900
+        ],
+        "maintenanceMonthly": [
+          199,
+          399
+        ],
+        "supportMinutes": 120
+      },
+      "extraScope": "Portofoliile peste 6 complexe ori 1.500 de unități, importurile istorice ample, plățile și conectorii cu sisteme de clădire se ofertează separat."
+    },
+    "administratii": {
+      "brand": "OrdoAdministratii",
+      "unitLabel": "asociații de proprietari și apartamente",
+      "scopeNote": "Apartamente, proprietari, citiri, repartizare configurabilă și liste lunare, solduri, fonduri, solicitări, lucrări și documente.",
+      "saas": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "scope": "1 asociație, maximum 100 de apartamente",
+          "monthly": [
+            49,
+            89
+          ],
+          "setup": [
+            190,
+            390
+          ],
+          "smsSegments": 50,
+          "whatsappUtility": 50,
+          "emails": 1000,
+          "supportMinutes": 20
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "scope": "Până la 3 asociații, maximum 500 de apartamente în total",
+          "monthly": [
+            129,
+            229
+          ],
+          "setup": [
+            490,
+            790
+          ],
+          "smsSegments": 150,
+          "whatsappUtility": 150,
+          "emails": 3000,
+          "supportMinutes": 45
+        },
+        {
+          "id": "network",
+          "name": "Network",
+          "scope": "Până la 6 asociații, maximum 1.500 de apartamente în total",
+          "monthly": [
+            279,
+            449
+          ],
+          "setup": [
+            990,
+            1490
+          ],
+          "smsSegments": 400,
+          "whatsappUtility": 400,
+          "emails": 8000,
+          "supportMinutes": 90
+        }
+      ],
+      "onPrem": {
+        "scope": "O firmă de administrare, până la 3 asociații și 500 de apartamente; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft și consumul furnizorilor de comunicare sau plăți nu sunt incluse.",
+        "license": [
+          2900,
+          4900
+        ],
+        "implementation": [
+          990,
+          1990
+        ],
+        "maintenanceMonthly": [
+          79,
+          149
+        ],
+        "supportMinutes": 60
+      },
+      "extraScope": "Peste 6 asociații ori 1.500 de apartamente, preluarea arhivei contabile, regulile de calcul personalizate și integrarea plăților se evaluează și se ofertează separat."
+    },
+    "farm": {
+      "brand": "OrdoFarm",
+      "unitLabel": "farmacii",
+      "scopeNote": "Catalog, loturi și termene, FEFO, stoc, aprovizionare, transferuri, excepții, financiar managerial și audit pe rețea.",
+      "saas": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "scope": "1 farmacie",
+          "monthly": [
+            149,
+            249
+          ],
+          "setup": [
+            990,
+            1490
+          ],
+          "smsSegments": 100,
+          "whatsappUtility": 150,
+          "emails": 2000,
+          "supportMinutes": 45
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "scope": "2–3 farmacii",
+          "monthly": [
+            399,
+            649
+          ],
+          "setup": [
+            2490,
+            3990
+          ],
+          "smsSegments": 400,
+          "whatsappUtility": 500,
+          "emails": 6000,
+          "supportMinutes": 90
+        },
+        {
+          "id": "network",
+          "name": "Network",
+          "scope": "4–6 farmacii",
+          "monthly": [
+            799,
+            1299
+          ],
+          "setup": [
+            4990,
+            7990
+          ],
+          "smsSegments": 1000,
+          "whatsappUtility": 1200,
+          "emails": 15000,
+          "supportMinutes": 180
+        }
+      ],
+      "onPrem": {
+        "scope": "O organizație, până la 3 farmacii; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft, echipamentele, consumul furnizorilor și accesul la sisteme reglementate nu sunt incluse.",
+        "license": [
+          9900,
+          16900
+        ],
+        "implementation": [
+          4900,
+          9900
+        ],
+        "maintenanceMonthly": [
+          249,
+          499
+        ],
+        "supportMinutes": 120
+      },
+      "extraScope": "Rețelele de la 7 farmacii, POS/ERP, senzori, migrarea loturilor și conectorii SNVM, CNAS/SIUI ori prescripție electronică necesită acces validat și ofertă separată."
+    }
+  }
+}

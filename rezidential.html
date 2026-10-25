@@ -13,13 +13,134 @@
     @media(max-width:620px){.wrap{width:min(100% - 28px,1160px)}.topin{height:68px}.portfolio{max-width:94px;padding:8px;text-align:center;font-size:8px}.hero{padding:64px 0 54px}.hero-grid,.portal-grid{grid-template-columns:1fr;gap:12px}.hero-actions{flex-direction:column}.hero-actions .button{width:100%}.board{margin-top:28px;padding:8px}.dash{grid-template-columns:42px 1fr;min-height:430px}.rail{padding:13px 6px}.rail i{width:20px}.dashmain{padding:18px 11px}.metrics{gap:4px}.metric{padding:10px 7px}.metric b{font-size:18px}.maprow{grid-template-columns:1fr}.tickets{display:none}.section{padding:75px 0}.heading{gap:21px;margin-bottom:37px}.heading h2{font-size:38px}.portal-grid .card:last-child{grid-column:auto}.card{min-height:auto;padding:25px}.glyph{margin:33px 0 21px}.estate,.handover-copy,.timeline,.maintenance,.finance,.supply,.access,.deploy-panel{padding:27px 22px}.hierarchy{grid-template-columns:1fr}.hierarchy div{min-height:88px}.hierarchy div:not(:last-child):after{content:"↓";right:16px}.timeline-row{grid-template-columns:38px 1fr}.timeline-row small{grid-column:2}.supply-flow{grid-template-columns:1fr 1fr}.integration-row,.deploy-grid{grid-template-columns:1fr}.closing-box{grid-template-columns:1fr;padding:28px 22px}.closing-box .mark{display:none}.foot{align-items:flex-start;flex-direction:column}.footlinks{flex-wrap:wrap}}
     @media(max-width:350px){h1{font-size:43px}.word strong{font-size:14px}.word small{font-size:6px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{display:none}.supply-flow{grid-template-columns:1fr}}
     @media print{@page{size:A4;margin:12mm}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}html{scroll-behavior:auto}body{background:#fff;font-size:10pt;zoom:.77}.top{position:static;background:#fff}.topin{height:54px}.nav,.portfolio,.hero-actions,.deploy-tabs,.skip,.footlinks{display:none!important}.wrap{width:100%}.hero{padding:20px 0}.hero-grid{grid-template-columns:.88fr 1.12fr;gap:25px}.board{box-shadow:none;transform:none}.dash{min-height:355px}.section{padding:13mm 0}.heading{grid-template-columns:1fr .72fr;gap:32px;align-items:end;margin-bottom:8mm}.portfolio-grid{grid-template-columns:1.25fr .75fr}.portal-grid{grid-template-columns:repeat(3,1fr)}.portal-grid .card:last-child{grid-column:auto}.handover{grid-template-columns:.8fr 1.2fr}.ops-grid{grid-template-columns:1fr 1fr}.maintenance{grid-row:span 2}.connected{grid-template-columns:.8fr 1.2fr}.integration-row{grid-template-columns:repeat(3,1fr)}.deploy-panel{grid-template-columns:.8fr 1.2fr}.hierarchy{grid-template-columns:repeat(5,1fr)}.estate,.handover-copy,.timeline,.maintenance,.finance,.supply,.access,.deploy-panel{padding:25px}.card{min-height:270px;padding:20px}.glyph{margin:25px 0 18px}.card p,.estate>p,.maintenance>p,.finance>p,.supply>p,.access>p,.deploy p{font-size:8pt}.checklist li{font-size:7.5pt}.deploy-panel,.deploy-panel[hidden]{display:grid!important;break-inside:avoid;margin-bottom:7mm}.mode{display:none}.print-only{display:block}#predari,#operatiuni,#livrare{break-before:page}.portfolio-grid,.portal-grid,.handover,.ops-grid,.connected,.deploy-panel{break-inside:avoid}.closing{padding:9mm 0}.closing-box{padding:22px}.footer{padding:17px 0}}
-  </style>
+  /* ORDO_PRICING_CSS_START */
+    .op-price-jump { display: inline-flex; align-items: center; margin-top: 16px; padding: 9px 12px; border: 1px solid #d8d7d0; border-radius: 9px; color: #173f4f; background: #f4f0e7; font-size: 10px; font-weight: 850; text-decoration: none; }
+    .op-price-jump:hover { border-color: #d3b275; color: #234f5d; }
+    .op-price-jump:focus-visible { outline: 3px solid #d3b275; outline-offset: 3px; }
+    .ordo-pricing {
+      --op-primary: #173f4f;
+      --op-primary-2: #234f5d;
+      --op-accent: #d3b275;
+      --op-tint: #f4f0e7;
+      --op-ink: #24363d;
+      --op-muted: #68767b;
+      --op-line: #d8d7d0;
+      padding: 94px 0;
+      color: var(--op-ink);
+      background: var(--op-tint);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    .ordo-pricing *, .ordo-pricing *::before, .ordo-pricing *::after { box-sizing: border-box; }
+    .ordo-pricing .op-shell { width: min(1160px, calc(100% - 42px)); margin: 0 auto; }
+    .ordo-pricing .op-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 36px; margin-bottom: 34px; }
+    .ordo-pricing .op-heading > div { max-width: 760px; min-width: 0; }
+    .ordo-pricing .op-eyebrow { margin: 0 0 10px; color: var(--op-accent); font-size: 9px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .ordo-pricing h2, .ordo-pricing h3, .ordo-pricing p { margin-top: 0; }
+    .ordo-pricing h2 { margin-bottom: 12px; color: var(--op-primary); font-size: clamp(36px, 4.7vw, 58px); line-height: 1.02; letter-spacing: -.05em; }
+    .ordo-pricing .op-heading p:last-child { max-width: 700px; margin-bottom: 0; color: var(--op-muted); font-size: 14px; }
+    .ordo-pricing .op-label { padding: 8px 11px; border: 1px solid var(--op-line); border-radius: 999px; color: var(--op-muted); background: #fff; font-size: 9px; font-weight: 850; white-space: nowrap; }
+    .ordo-pricing .op-saas-head { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-bottom: 13px; }
+    .ordo-pricing .op-saas-head > div { display: flex; align-items: center; gap: 9px; color: var(--op-primary); }
+    .ordo-pricing .op-saas-head p { max-width: 580px; margin: 0; color: var(--op-muted); font-size: 11px; text-align: right; }
+    .ordo-pricing .op-number { display: inline-grid; width: 25px; height: 25px; place-items: center; border-radius: 7px; color: var(--op-primary); background: color-mix(in srgb, var(--op-accent) 25%, white); font-size: 8px; font-weight: 900; }
+    .ordo-pricing .op-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .ordo-pricing .op-plan { min-width: 0; padding: 21px; border: 1px solid var(--op-line); border-radius: 18px; background: #fff; box-shadow: 0 9px 26px color-mix(in srgb, var(--op-primary) 9%, transparent); }
+    .ordo-pricing .op-plan-featured { border-top: 5px solid var(--op-accent); padding-top: 17px; }
+    .ordo-pricing .op-plan-head { min-height: 26px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .ordo-pricing .op-plan-name { color: var(--op-primary); font-size: 16px; font-weight: 900; }
+    .ordo-pricing .op-plan-tag { padding: 4px 6px; border-radius: 999px; color: var(--op-primary); background: color-mix(in srgb, var(--op-accent) 20%, white); font-size: 7px; font-weight: 900; white-space: nowrap; }
+    .ordo-pricing .op-scope { min-height: 42px; margin: 7px 0 11px; color: var(--op-muted); font-size: 12px; }
+    .ordo-pricing .op-price strong { display: block; color: var(--op-primary); font-size: clamp(25px, 2.8vw, 34px); line-height: 1; letter-spacing: -.045em; }
+    .ordo-pricing .op-price span { display: block; margin-top: 5px; color: var(--op-muted); font-size: 10px; }
+    .ordo-pricing .op-setup { margin: 12px 0; padding: 9px; border-radius: 9px; color: var(--op-muted); background: var(--op-tint); font-size: 11px; }
+    .ordo-pricing .op-setup b { color: var(--op-primary); }
+    .ordo-pricing .op-allowances { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .ordo-pricing .op-allowances li { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--op-line); font-size: 11px; }
+    .ordo-pricing .op-allowances li:last-child { border: 0; }
+    .ordo-pricing .op-allowances span { color: var(--op-muted); }
+    .ordo-pricing .op-allowances b { color: var(--op-primary); text-align: right; }
+    .ordo-pricing .op-onprem { display: grid; grid-template-columns: .83fr 1.17fr; gap: 24px; margin-top: 14px; padding: 22px; border-radius: 18px; color: #fff; background: var(--op-primary); }
+    .ordo-pricing .op-onprem-intro .op-number { margin-bottom: 12px; }
+    .ordo-pricing .op-onprem-intro .op-eyebrow { color: #fff; }
+    .ordo-pricing .op-onprem-intro h3 { margin-bottom: 7px; color: #fff; font-size: 25px; letter-spacing: -.035em; }
+    .ordo-pricing .op-onprem-intro > p:last-child { margin: 0; color: rgba(255,255,255,.82); font-size: 12px; }
+    .ordo-pricing .op-onprem-prices { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; }
+    .ordo-pricing .op-total { display: flex; flex-direction: column; justify-content: center; padding: 15px; border: 1px solid color-mix(in srgb, var(--op-accent) 50%, transparent); border-radius: 12px; background: color-mix(in srgb, var(--op-accent) 13%, transparent); }
+    .ordo-pricing .op-total span, .ordo-pricing .op-total small { color: rgba(255,255,255,.72); font-size: 7px; }
+    .ordo-pricing .op-total strong { margin: 6px 0; color: #fff; font-size: 22px; letter-spacing: -.035em; }
+    .ordo-pricing dl { margin: 0; }
+    .ordo-pricing dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,.11); font-size: 11px; }
+    .ordo-pricing dl div:last-child { border: 0; }
+    .ordo-pricing dt { color: rgba(255,255,255,.67); }
+    .ordo-pricing dd { margin: 0; color: #fff; font-weight: 850; text-align: right; }
+    .ordo-pricing .op-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .ordo-pricing .op-notes p { margin: 0; padding: 10px 12px; border: 1px solid var(--op-line); border-radius: 11px; color: var(--op-muted); background: #fff; font-size: 11px; }
+    .ordo-pricing .op-notes strong { color: var(--op-primary); }
+    .ordo-pricing .op-commercial { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 16px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--op-line); }
+    .ordo-pricing .op-commercial p, .ordo-pricing .op-commercial strong { margin: 0; color: var(--op-muted); font-size: 10px; }
+    .ordo-pricing .op-commercial strong { color: var(--op-primary); text-align: right; }
+    @media (max-width: 760px) {
+      .ordo-pricing { padding: 68px 0; }
+      .ordo-pricing .op-shell { width: min(100% - 28px, 1160px); }
+      .ordo-pricing .op-heading { grid-template-columns: 1fr; align-items: start; gap: 13px; }
+      .ordo-pricing h2 { overflow-wrap: anywhere; font-size: clamp(29px, 10vw, 42px); }
+      .ordo-pricing .op-label { white-space: normal; }
+      .ordo-pricing .op-saas-head { align-items: flex-start; flex-direction: column; }
+      .ordo-pricing .op-saas-head p { text-align: left; }
+      .ordo-pricing .op-plans, .ordo-pricing .op-onprem, .ordo-pricing .op-onprem-prices, .ordo-pricing .op-notes, .ordo-pricing .op-commercial { grid-template-columns: 1fr; }
+      .ordo-pricing .op-scope { min-height: 0; }
+      .ordo-pricing .op-commercial strong { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ordo-pricing *, .ordo-pricing *::before, .ordo-pricing *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      .ordo-pricing { min-height: 0; display: block; break-before: page; break-after: auto; padding: 5mm 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      body > footer { display: none !important; }
+      .op-price-jump { display: none !important; }
+      .ordo-pricing .op-shell { width: 100%; }
+      .ordo-pricing .op-commercial { display: grid !important; }
+      .ordo-pricing .op-heading { grid-template-columns: 1fr auto; gap: 12px; margin-bottom: 9px; }
+      .ordo-pricing h2 { margin-bottom: 4px; font-size: 19pt; }
+      .ordo-pricing .op-heading p:last-child { font-size: 7pt; }
+      .ordo-pricing .op-label { padding: 4px 6px; font-size: 6pt; }
+      .ordo-pricing .op-saas-head { margin-bottom: 5px; }
+      .ordo-pricing .op-saas-head p { font-size: 6pt; }
+      .ordo-pricing .op-number { width: 18px; height: 18px; font-size: 7pt; }
+      .ordo-pricing .op-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .ordo-pricing .op-plan { break-inside: avoid; padding: 9px; border-radius: 10px; box-shadow: none; }
+      .ordo-pricing .op-plan-featured { padding-top: 6px; border-top-width: 4px; }
+      .ordo-pricing .op-plan-head { min-height: 17px; }
+      .ordo-pricing .op-plan-name { font-size: 9pt; }
+      .ordo-pricing .op-plan-tag { font-size: 6.5pt; }
+      .ordo-pricing .op-scope { min-height: 26px; margin: 3px 0 5px; font-size: 6pt; }
+      .ordo-pricing .op-price strong { font-size: 15pt; }
+      .ordo-pricing .op-price span, .ordo-pricing .op-setup { font-size: 7pt; }
+      .ordo-pricing .op-setup { margin: 5px 0; padding: 5px; }
+      .ordo-pricing .op-allowances li { padding: 3px 0; font-size: 7pt; }
+      .ordo-pricing .op-onprem { break-inside: avoid; grid-template-columns: .78fr 1.22fr; gap: 8px; margin-top: 6px; padding: 9px; border-radius: 10px; }
+      .ordo-pricing .op-onprem-intro .op-number { margin-bottom: 4px; }
+      .ordo-pricing .op-onprem-intro h3 { margin-bottom: 3px; font-size: 12pt; }
+      .ordo-pricing .op-onprem-intro > p:last-child { font-size: 7pt; }
+      .ordo-pricing .op-onprem-prices { gap: 6px; }
+      .ordo-pricing .op-total { padding: 7px; }
+      .ordo-pricing .op-total strong { margin: 3px 0; font-size: 11pt; }
+      .ordo-pricing .op-total span, .ordo-pricing .op-total small, .ordo-pricing dl div { font-size: 6.5pt; }
+      .ordo-pricing dl div { padding: 2px 0; }
+      .ordo-pricing .op-notes { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 5px; }
+      .ordo-pricing .op-notes p { padding: 5px; font-size: 6.8pt; }
+      .ordo-pricing .op-commercial { grid-template-columns: 1.3fr .7fr; gap: 7px; margin-top: 5px; padding-top: 5px; }
+      .ordo-pricing .op-commercial p, .ordo-pricing .op-commercial strong { font-size: 6.5pt; }
+    }
+/* ORDO_PRICING_CSS_END */
+</style>
 </head>
 <body>
   <a class="skip" href="#continut">Sari la conținut</a>
   <header class="top"><div class="wrap topin"><a class="brand" href="#acasa" aria-label="OrdoRezidential, Powered by Clarified"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Simbol OrdoRezidential"><rect width="48" height="48" rx="13" fill="#173F4F"/><path d="M11 35V20l13-8 13 8v15" fill="none" stroke="#F4F0E7" stroke-width="2.8" stroke-linejoin="round"/><path d="M17 35V23h6v12m3-17v17h6V22" fill="none" stroke="#D3B275" stroke-width="2.8" stroke-linejoin="round"/><path d="M9 36h30" stroke="#F4F0E7" stroke-width="2.8" stroke-linecap="round"/></svg><span class="word"><strong>OrdoRezidential</strong><small>Powered by Clarified</small></span></a><nav class="nav" aria-label="Navigație"><a href="#portofoliu">Portofoliu</a><a href="#portal">Locatari</a><a href="#operatiuni">Operațiuni</a><a href="#livrare">Livrare</a></nav><a class="portfolio" href="index.html">← Portofoliu produse</a></div></header>
   <main id="continut">
-    <section class="hero" id="acasa"><div class="wrap hero-grid"><div><span class="kicker">Operațiuni rezidențiale conectate</span><h1>Fiecare proprietate.<br><em>O singură perspectivă.</em></h1><p class="lead">OrdoRezidential este conceptul unei platforme adaptabile pentru operatori rezidențiali, dezvoltatori și administratori: proprietăți, locatari, mentenanță, costuri și aprovizionare într-un flux coerent.</p><span class="concept">Concept de produs · Prezentare</span><div class="hero-actions"><a class="button primary" href="#portofoliu">Explorează conceptul</a><a class="button secondary" href="#livrare">Compară livrarea</a></div></div><div class="board" aria-label="Tablou de bord cu date ilustrative"><span class="board-label">Date ilustrative</span><div class="dash"><aside class="rail"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4F0E7"/><path d="M11 35V20l13-8 13 8v15M9 36h30" fill="none" stroke="#173F4F" stroke-width="2.8"/><path d="M17 35V23h6v12m3-17v17h6V22" fill="none" stroke="#D3B275" stroke-width="2.8"/></svg><i class="on"></i><i></i><i></i><i></i></aside><div class="dashmain"><div class="dashhead"><div><small>Portofoliu Nord · astăzi</small><strong>Control operațional</strong></div><span class="avatar">OP</span></div><div class="metrics"><article class="metric"><small>Unități</small><b>284</b><span>valoare ilustrativă</span></article><article class="metric"><small>Tichete active</small><b>17</b><span>valoare ilustrativă</span></article><article class="metric"><small>Lucrări planificate</small><b>8</b><span>valoare ilustrativă</span></article></div><div class="maprow"><article class="map"><h3>Complexuri și clădiri</h3><div class="buildings"><i class="tower"></i><i class="tower"></i><i class="tower"></i></div><p>Unități, parcări și spații comune în aceeași structură.</p></article><article class="tickets"><h3>Priorități</h3><div class="ticket"><i></i><b>Revizie lift · Corp B</b></div><div class="ticket"><i></i><b>Predare · Unitatea 3.12</b></div><div class="ticket"><i></i><b>Recepție materiale</b></div><p>Exemple demonstrative.</p></article></div></div></div></div></div></section>
+    <section class="hero" id="acasa"><div class="wrap hero-grid"><div><span class="kicker">Operațiuni rezidențiale conectate</span><h1>Fiecare proprietate.<br><em>O singură perspectivă.</em></h1><p class="lead">OrdoRezidential este conceptul unei platforme adaptabile pentru operatori rezidențiali, dezvoltatori și administratori: proprietăți, locatari, mentenanță, costuri și aprovizionare într-un flux coerent.</p><a class="op-price-jump" href="#tarife">Vezi pachetele și tarifele ↓</a><span class="concept">Concept de produs · Prezentare</span><div class="hero-actions"><a class="button primary" href="#portofoliu">Explorează conceptul</a><a class="button secondary" href="#livrare">Compară livrarea</a></div></div><div class="board" aria-label="Tablou de bord cu date ilustrative"><span class="board-label">Date ilustrative</span><div class="dash"><aside class="rail"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4F0E7"/><path d="M11 35V20l13-8 13 8v15M9 36h30" fill="none" stroke="#173F4F" stroke-width="2.8"/><path d="M17 35V23h6v12m3-17v17h6V22" fill="none" stroke="#D3B275" stroke-width="2.8"/></svg><i class="on"></i><i></i><i></i><i></i></aside><div class="dashmain"><div class="dashhead"><div><small>Portofoliu Nord · astăzi</small><strong>Control operațional</strong></div><span class="avatar">OP</span></div><div class="metrics"><article class="metric"><small>Unități</small><b>284</b><span>valoare ilustrativă</span></article><article class="metric"><small>Tichete active</small><b>17</b><span>valoare ilustrativă</span></article><article class="metric"><small>Lucrări planificate</small><b>8</b><span>valoare ilustrativă</span></article></div><div class="maprow"><article class="map"><h3>Complexuri și clădiri</h3><div class="buildings"><i class="tower"></i><i class="tower"></i><i class="tower"></i></div><p>Unități, parcări și spații comune în aceeași structură.</p></article><article class="tickets"><h3>Priorități</h3><div class="ticket"><i></i><b>Revizie lift · Corp B</b></div><div class="ticket"><i></i><b>Predare · Unitatea 3.12</b></div><div class="ticket"><i></i><b>Recepție materiale</b></div><p>Exemple demonstrative.</p></article></div></div></div></div></div></section>
 
     <section class="section alt" id="portofoliu"><div class="wrap"><div class="heading"><div><span class="eyebrow">01 / Structura portofoliului</span><h2>De la complex<br><em>până la locul de parcare.</em></h2></div><p>Modelul propus păstrează relațiile dintre proprietăți, contracte și operațiuni fără să fragmenteze fiecare clădire într-un registru separat.</p></div><div class="portfolio-grid"><article class="estate"><h3>O ierarhie care urmărește realitatea</h3><p>Configurația poate reflecta portofolii diferite, cu reguli și responsabilități la fiecare nivel.</p><div class="hierarchy"><div><span>01</span><b>Complex</b></div><div><span>02</span><b>Clădire</b></div><div><span>03</span><b>Scară</b></div><div><span>04</span><b>Unitate</b></div><div><span>05</span><b>Parcare</b></div></div></article><div class="unitcards"><article class="unit"><span>SPAȚII ASOCIATE</span><b>Boxe, parcări și zone comune</b><p>Legături propuse între utilizare, proprietar și documentele relevante.</p></article><article class="unit"><span>OCUPARE</span><b>Proprietar, chiriaș, perioadă</b><p>Istoric separat de datele curente și acces limitat după rol.</p></article><article class="unit"><span>MULTI-COMPLEX</span><b>Reguli locale, control central</b><p>Vizibilitate la nivel de complex și consolidare pentru operator.</p></article></div></div></div></section>
 
@@ -34,7 +155,102 @@
     <section class="section" id="livrare"><div class="wrap"><div class="heading"><div><span class="eyebrow">06 / Modele de livrare</span><h2>Aceleași module.<br><em>Responsabilități diferite.</em></h2></div><p>Oferta este adaptată numărului de complexe, unităților administrate, integrărilor și serviciilor de implementare alese.</p></div><div class="deploy-tabs" role="group" aria-label="Alege modelul de livrare"><button class="mode" type="button" data-mode="saas" aria-pressed="true">SaaS administrat</button><button class="mode" type="button" data-mode="onprem" aria-pressed="false">On-Premise</button></div><article class="deploy deploy-panel" data-mode-panel="saas"><div><span class="eyebrow">SaaS administrat</span><h3>Serviciu găzduit, administrat contractual.</h3><p>Un abonament pentru organizație, adaptat portofoliului. Modulele funcționale și limitele sunt definite în oferta finală.</p></div><div class="deploy-grid"><div class="deploy-card"><span>FURNIZOR</span><b>Găzduire și actualizări</b><p>Operarea tehnică urmează contractul și nivelul de serviciu agreat.</p></div><div class="deploy-card"><span>ORGANIZAȚIE</span><b>Date, utilizatori și procese</b><p>Clientul gestionează conținutul, rolurile și regulile sale.</p></div><div class="deploy-card"><span>IDENTITATE</span><b>Conturi sau SSO configurabil</b><p>Entra ID poate fi evaluat pentru organizațiile eligibile.</p></div><div class="deploy-card"><span>COMERCIAL</span><b>Abonament și implementare</b><p>Preț după evaluare și ofertare.</p></div></div></article><article class="deploy deploy-panel" data-mode-panel="onprem" hidden><div><span class="eyebrow">On-Premise · instalare privată</span><h3>Platforma rulează în mediul clientului.</h3><p>Aceleași module contractate, livrate prin licență, implementare și mentenanță, cu responsabilități tehnice explicite.</p></div><div class="deploy-grid"><div class="deploy-card"><span>CLIENT</span><b>Infrastructură și backup</b><p>Organizația asigură mediul, rețeaua, monitorizarea și continuitatea datelor.</p></div><div class="deploy-card"><span>FURNIZOR</span><b>Instalare și mentenanță</b><p>Actualizările și suportul urmează ferestrele agreate.</p></div><div class="deploy-card"><span>IDENTITATE</span><b>Tenant și licențe proprii</b><p>Entra ID și licențele Microsoft rămân în responsabilitatea clientului.</p></div><div class="deploy-card"><span>COMERCIAL</span><b>Licență + implementare + mentenanță</b><p>Preț după evaluare și ofertare; adaptările se cotează separat.</p></div></div></article><p class="print-only">Versiunea tipărită prezintă ambele modele de livrare.</p></div></section>
 
     <section class="closing"><div class="wrap closing-box"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#173F4F"/><path d="M11 35V20l13-8 13 8v15M9 36h30" fill="none" stroke="#F4F0E7" stroke-width="2.8"/><path d="M17 35V23h6v12m3-17v17h6V22" fill="none" stroke="#D3B275" stroke-width="2.8"/></svg><div><h2>Administrează proprietățile ca pe un sistem.</h2><p>OrdoRezidential poate fi adaptat portofoliului, structurii organizației și fluxurilor contractate.</p></div><a class="button primary" href="#acasa">Revezi conceptul ↑</a></div></section>
-  </main>
+  <!-- ORDO_PRICING_START -->
+  <section class="ordo-pricing op-theme-rezidential" id="tarife" aria-labelledby="tarife-heading">
+    <div class="op-shell">
+      <header class="op-heading">
+        <div>
+          <p class="op-eyebrow">Ofertă comercială propusă · 2026-10-25</p>
+          <h2 id="tarife-heading">Tarife clare pentru OrdoRezidential.</h2>
+          <p>Unități, proprietari și chiriași, predări, garanții, intervenții, furnizori, documente și raportare de portofoliu.</p>
+        </div>
+        <span class="op-label">Intervale orientative · EUR, fără TVA</span>
+      </header>
+
+      <div class="op-saas-head">
+        <div><span class="op-number">01</span><strong>SaaS administrat · complexe rezidențiale și unități</strong></div>
+        <p>Găzduirea, actualizările și backupul sunt incluse în limitele și responsabilitățile contractate.</p>
+      </div>
+      <div class="op-plans">
+
+        <article class="op-plan">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Starter</span>
+
+          </div>
+          <p class="op-scope">1 complex rezidențial, maximum 100 de unități</p>
+          <div class="op-price"><strong>149–249 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>690–1.190 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>200 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>250 Utility / lună</b></li>
+            <li><span>Email</span><b>3.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>45 min / lună</b></li>
+          </ul>
+        </article>
+        <article class="op-plan op-plan-featured">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Growth</span>
+            <span class="op-plan-tag">Echilibru operațional</span>
+          </div>
+          <p class="op-scope">Până la 3 complexe, maximum 500 de unități în total</p>
+          <div class="op-price"><strong>349–599 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>1.490–2.490 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>700 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>800 Utility / lună</b></li>
+            <li><span>Email</span><b>10.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>90 min / lună</b></li>
+          </ul>
+        </article>
+        <article class="op-plan">
+          <div class="op-plan-head">
+            <span class="op-plan-name">Network</span>
+
+          </div>
+          <p class="op-scope">Până la 6 complexe, maximum 1.500 de unități în total</p>
+          <div class="op-price"><strong>699–1.099 €</strong><span>/ lună · total organizație</span></div>
+          <p class="op-setup"><b>2.990–4.990 €</b> configurare inițială, o singură dată</p>
+          <ul class="op-allowances">
+            <li><span>SMS</span><b>1.800 segmente / lună</b></li>
+            <li><span>WhatsApp</span><b>2.000 Utility / lună</b></li>
+            <li><span>Email</span><b>25.000 mesaje / lună</b></li>
+            <li><span>Suport inclus</span><b>180 min / lună</b></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="op-onprem">
+        <div class="op-onprem-intro">
+          <span class="op-number">02</span>
+          <p class="op-eyebrow">Instalare în infrastructura clientului</p>
+          <h3>On‑Premise</h3>
+          <p>O organizație, până la 3 complexe și 500 de unități; mentenanță fixă lunară, facturabilă lunar sau ca echivalent anual. Infrastructura clientului, licențele Microsoft și consumul furnizorilor de comunicare sau plăți nu sunt incluse.</p>
+        </div>
+        <div class="op-onprem-prices">
+          <div class="op-total"><span>Investiție inițială totală</span><strong>11.390–19.800 €</strong><small>licență + implementare, o singură dată</small></div>
+          <dl>
+            <div><dt>Licență</dt><dd>7.900–12.900 €</dd></div>
+            <div><dt>Implementare</dt><dd>3.490–6.900 €</dd></div>
+            <div><dt>Mentenanță</dt><dd>199–399 € / lună</dd></div>
+            <div><dt>Echivalent anual mentenanță</dt><dd>2.388–4.788 € / an</dd></div>
+            <div><dt>Suport inclus</dt><dd>120 min / lună</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="op-notes">
+        <p><strong>Comunicare inclusă în SaaS.</strong> Cotele sunt lunare, comune organizației și nu se reportează. SMS se contorizează pe segmente; WhatsApp include doar mesaje Utility, fără Marketing; depășirea necesită un buget suplimentar agreat. Este inclus un profil de expeditor per organizație, după aprobarea și configurarea furnizorului.</p>
+        <p><strong>Perimetru separat.</strong> În On‑Premise, infrastructura clientului, Microsoft 365 și consumul furnizorilor sunt separate. Migrările complexe, dezvoltările, conectorii personalizați sau reglementați se ofertează distinct. Portofoliile peste 6 complexe ori 1.500 de unități, importurile istorice ample, plățile și conectorii cu sisteme de clădire se ofertează separat.</p>
+      </div>
+      <footer class="op-commercial">
+        <p>Intervale orientative în EUR, fără TVA, pentru totalul organizației și pachetului ales. Oferta finală confirmă migrarea, integrările, volumele și serviciile contractate. Suportul suplimentar și dezvoltările se cotează separat.</p>
+        <strong>Oferta finală confirmă perimetrul, volumele, responsabilitățile și calendarul de implementare.</strong>
+      </footer>
+    </div>
+  </section>
+<!-- ORDO_PRICING_END -->
+</main>
   <footer class="footer"><div class="wrap foot"><a class="brand" href="#acasa"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#F4F0E7"/><path d="M11 35V20l13-8 13 8v15M9 36h30" fill="none" stroke="#173F4F" stroke-width="2.8"/><path d="M17 35V23h6v12m3-17v17h6V22" fill="none" stroke="#D3B275" stroke-width="2.8"/></svg><span class="word"><strong style="color:#fff">OrdoRezidential</strong><small>Powered by Clarified</small></span></a><small>Concept de produs · Exemple de interfață cu date ilustrative</small><div class="footlinks"><a href="index.html">Portofoliu</a><a href="administratii.html">Concept pentru administrații →</a></div></div></footer>
   <script>
     (()=>{const key='ordo-rezidential-delivery-mode',buttons=[...document.querySelectorAll('[data-mode]')],panels=[...document.querySelectorAll('[data-mode-panel]')];let selected='saas';try{const saved=localStorage.getItem(key);if(['saas','onprem'].includes(saved))selected=saved}catch{}const apply=mode=>{selected=mode;buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===mode)));panels.forEach(panel=>panel.hidden=panel.dataset.modePanel!==mode);try{localStorage.setItem(key,mode)}catch{}};buttons.forEach(button=>button.addEventListener('click',()=>apply(button.dataset.mode)));apply(selected)})();
