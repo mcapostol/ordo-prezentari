@@ -19,7 +19,7 @@ const productCatalog = [
   { key: 'clubs', file: 'clubs.html', kind: 'product', brand: 'OrdoClubs', pdf: 'OrdoClubs.pdf', persistMode: true },
   { key: 'rezidential', file: 'rezidential.html', kind: 'product', brand: 'OrdoRezidential', pdf: 'OrdoRezidential.pdf', persistMode: true },
   { key: 'administratii', file: 'administratii.html', kind: 'product', brand: 'OrdoAdministratii', pdf: 'OrdoAdministratii.pdf', persistMode: true },
-  { key: 'farm', file: 'farm.html', kind: 'product', brand: 'OrdoFarm', pdf: 'OrdoFarm.pdf', persistMode: true },
+  { key: 'farm', file: 'farm.html', kind: 'product', brand: 'OrdoFarm', pdf: 'OrdoFarm.pdf', persistMode: true, maxPdfPages: 11 },
 ];
 const viewports = [
   { key: 'desktop', width: 1440, height: 1000, screenshot: true },
@@ -238,6 +238,21 @@ async function assertRequiredProductContent(page, pageFile) {
     ['Date ilustrative', /date ilustrative/],
   ];
   for (const [label, pattern] of requirements) assert.match(text, pattern, `${pageFile}: lipsește conținutul obligatoriu „${label}”.`);
+  if (pageFile === 'farm.html') {
+    const pharmacyRequirements = [
+      ['CNAS și rețete', /cnas[\s\S]*sipe[\s\S]*ceas/],
+      ['vânzare POS', /\bpos\b/],
+      ['stoc în toate farmaciile', /toate farmaciile/],
+      ['scanare DataMatrix', /datamatrix/],
+      ['dispozitiv fiscal AMEF', /amef/],
+      ['facturi și e-Factura', /e-factura/],
+      ['validarea activării', /certificatele si validarea/],
+    ];
+    for (const [label, pattern] of pharmacyRequirements) assert.match(text, pattern, `${pageFile}: lipsește ${label}.`);
+    for (const id of ['cnas-retete', 'vanzare', 'echipamente', 'tarife']) {
+      assert.equal(await page.locator(`#${id}`).count(), 1, `${pageFile}: secțiunea ${id} lipsește sau este duplicată.`);
+    }
+  }
   const panels = page.locator('[data-mode-panel]');
   assert.equal(await panels.count(), 2, `${pageFile}: sunt necesare exact două panouri de deployment.`);
   return { requirements: requirements.map(([label]) => label), conceptDisclosure: true, illustrativeDataDisclosure: true };
@@ -375,7 +390,7 @@ try {
             await page.emulateMedia({ media: 'screen' });
             const pdf = await readFile(path.join(outputs, pdfName));
             const pageCount = pdfPageCount(pdf);
-            assert.ok(pageCount >= 3 && pageCount <= 7, `${config.file}: PDF-ul are ${pageCount} pagini; intervalul acceptat este 3–7.`);
+            assert.ok(pageCount >= 3 && pageCount <= (config.maxPdfPages || 7), `${config.file}: PDF-ul are ${pageCount} pagini; intervalul acceptat este 3–${config.maxPdfPages || 7}.`);
             report.artifacts.push({ type: 'pdf', page: config.file, brand: config.brand, pageCount, bytes: pdf.length, sha256: createHash('sha256').update(pdf).digest('hex'), file: `outputs/${pdfName}` });
           }
           return { ...local, ...metrics, ...contract };

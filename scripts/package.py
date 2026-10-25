@@ -41,7 +41,7 @@ for name, details in manifest['files'].items():
     entries[name] = payload
 for key, brand in products.items():
     matches = [item for item in report['artifacts'] if item['type'] == 'pdf' and item['page'] == key + '.html']
-    if len(matches) != 1 or not 3 <= matches[0]['pageCount'] <= 7:
+    if len(matches) != 1 or not 3 <= matches[0]['pageCount'] <= (11 if key == 'farm' else 7):
         raise SystemExit(f'Accepted PDF missing or invalid: {brand}')
     payload = (OUT / (brand + '.pdf')).read_bytes()
     if sha256(payload).hexdigest() != matches[0].get('sha256') or len(payload) != matches[0].get('bytes'):
@@ -65,7 +65,7 @@ OrdoFarm — farmacii independente și lanțuri de farmacii.
 Fiecare prezentare explică modulele propuse, portalul utilizatorului, administrarea
 unei organizații sau rețele, controlul financiar, aprovizionarea și accesul pe roluri.
 Sunt incluse ambele modele: SaaS și On-Premise, cu responsabilitățile și modelul
-comercial aferent. Prețul se stabilește după evaluarea configurației clientului.
+comercial aferent. Sunt incluse intervale de preț orientative; oferta finală confirmă configurația clientului.
 
 Aceste materiale prezintă concepte de produs și interfețe cu date ilustrative.
 Nu sunt aplicații operaționale și nu activează conturi, plăți sau integrări reale.

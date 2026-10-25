@@ -309,7 +309,7 @@
     "farm": {
       "brand": "OrdoFarm",
       "unitLabel": "farmacii",
-      "scopeNote": "Catalog, loturi și termene, FEFO, stoc, aprovizionare, transferuri, excepții, financiar managerial și audit pe rețea.",
+      "scopeNote": "Vânzare POS, gestiunea rețetelor, catalog, loturi și termene, stoc în întreaga rețea, aprovizionare, documente și financiar managerial.",
       "saas": [
         {
           "id": "starter",
@@ -379,7 +379,7 @@
         ],
         "supportMinutes": 120
       },
-      "extraScope": "Rețelele de la 7 farmacii, POS/ERP, senzori, migrarea loturilor și conectorii SNVM, CNAS/SIUI ori prescripție electronică necesită acces validat și ofertă separată."
+      "extraScope": "Rețelele de la 7 farmacii, migrarea loturilor, echipamentele și driverele locale, integrarea procesatorului de plăți și activarea conectorilor CNAS/SIUI/SIPE/CEAS, SNVM ori e-Factura se evaluează și se ofertează separat, după validarea accesului și compatibilității."
     }
   }
 }
