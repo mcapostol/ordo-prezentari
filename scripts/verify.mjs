@@ -376,7 +376,7 @@ try {
             const pdf = await readFile(path.join(outputs, pdfName));
             const pageCount = pdfPageCount(pdf);
             assert.ok(pageCount >= 3 && pageCount <= 7, `${config.file}: PDF-ul are ${pageCount} pagini; intervalul acceptat este 3–7.`);
-            report.artifacts.push({ type: 'pdf', page: config.file, brand: config.brand, pageCount, file: `outputs/${pdfName}` });
+            report.artifacts.push({ type: 'pdf', page: config.file, brand: config.brand, pageCount, bytes: pdf.length, sha256: createHash('sha256').update(pdf).digest('hex'), file: `outputs/${pdfName}` });
           }
           return { ...local, ...metrics, ...contract };
         } finally {

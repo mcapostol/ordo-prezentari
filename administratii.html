@@ -963,6 +963,8 @@
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
 
+    .print-brand { display: none; }
+
     @media print {
       @page { size: A4 portrait; margin: 12mm; }
       :root { --shadow: none; --shadow-soft: none; }
@@ -970,6 +972,12 @@
       body { font-size: 8pt; }
       .site-header, .skip-link, .mode-toggle, footer { display: none !important; }
       .shell { width: 100%; }
+      .hero { position: relative; }
+      .print-brand { position: absolute; top: 4mm; left: 0; display: flex; align-items: center; gap: 11px; color: var(--graphite); }
+      .print-brand svg { width: 37px; height: 37px; }
+      .print-brand strong { display: block; font-size: 16pt; letter-spacing: -.04em; }
+      .print-brand small { display: block; font-size: 6.5pt; color: #5e6973; letter-spacing: .06em; margin-top: 2px; }
+      .structure-stat span { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.4; }
       .hero, .section, .closing { padding: 4mm 0; }
       .hero-grid, .hierarchy-grid, .portal-layout { grid-template-columns: 1fr 1fr; gap: 20px; }
       h1 { font-size: 29pt; }
@@ -1055,6 +1063,7 @@
 
   <main id="continut">
     <section class="hero" id="inceput">
+      <div class="print-brand shell"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#252D35"/><path d="M10 29V15l10-6 10 6v14" stroke="#E39449" stroke-width="3" stroke-linejoin="round"/><path d="M15 29v-8h10v8M15 16h2M23 16h2" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg><span><strong>OrdoAdministratii</strong><small>Powered by Clarified</small></span></div>
       <div class="shell hero-grid">
         <div>
           <p class="eyebrow">Concept de produs</p>
