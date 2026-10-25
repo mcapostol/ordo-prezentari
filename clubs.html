@@ -44,7 +44,6 @@
         var(--paper);
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.55;
-      overflow-x: hidden;
     }
 
     a { color: inherit; }
@@ -999,6 +998,7 @@
       h1 { font-size: clamp(2.9rem, 17vw, 4.4rem); }
       .hero-grid { grid-template-columns: minmax(0, 1fr); }
       .hero-card { padding: 15px; border-radius: 22px; }
+      .hero-card::before { right: 8px; }
       .mock-kpis { grid-template-columns: 1fr; }
       .mock-kpi span { white-space: normal; }
       .class-row { grid-template-columns: 44px 1fr; }
@@ -1033,21 +1033,60 @@
       @page { size: A4 portrait; margin: 12mm; }
       :root { --shadow: none; --shadow-soft: none; }
       html, body { background: #fff; }
-      body { font-size: 10.2pt; }
+      body { font-size: 8pt; }
       .site-header, .skip-link, .mode-toggle, footer { display: none !important; }
       .shell { width: 100%; }
-      .hero, .section, .closing { padding: 10mm 0; }
-      .hero-grid, .split { grid-template-columns: 1fr 1fr; gap: 10mm; }
-      h1 { font-size: 38pt; }
-      h2 { font-size: 25pt; }
+      .hero, .section, .closing { padding: 4mm 0; }
+      .hero-grid, .split { grid-template-columns: 1fr 1fr; gap: 22px; }
+      h1 { font-size: 30pt; }
+      h2 { margin-bottom: 7px; font-size: 19pt; }
+      .lead, .section-copy { margin-bottom: 8px; font-size: 8.8pt; }
       .hero-card { transform: none; box-shadow: none; }
       .section-white, .section-dark { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      main > section:nth-of-type(2), main > section:nth-of-type(4), main > section:nth-of-type(6), .closing { break-before: page; }
+      .section-head { margin-bottom: 15px; }
+      main > section:nth-of-type(1), main > section:nth-of-type(2), main > section:nth-of-type(5), main > section:nth-of-type(6) { min-height: 273mm; display: flex; align-items: center; }
+      main > section { break-before: auto; }
+      main > section:nth-of-type(2), main > section:nth-of-type(3), main > section:nth-of-type(5), main > section:nth-of-type(6), main > section:nth-of-type(7) { break-before: page; }
+      .closing { break-before: auto; }
       .cards, .ops-grid, .role-board, .mode-wrap, .dashboard { break-inside: avoid; }
       .cards { grid-template-columns: repeat(3, 1fr); }
-      .mode-panel { grid-template-columns: .8fr 1.2fr; }
-      [data-mode-panel][hidden] { display: grid; margin-top: 5mm; border-top: 1px solid var(--line); }
-      .closing-card { box-shadow: none; }
+      .dash-body { grid-template-columns: 1fr 1.25fr; gap: 10px; padding: 10px; }
+      .dash-panel { padding: 11px; }
+      .dash-bar { padding: 10px 12px; }
+      .feature-card, .ops-card { padding: 14px; }
+      .feature-card:last-child { grid-column: auto; }
+      .icon { width: 34px; height: 34px; margin-bottom: 8px; }
+      .feature-card p { margin-bottom: 8px; font-size: 7.6pt; }
+      .check-list { gap: 4px; font-size: 7.3pt; }
+      .steps { gap: 4px; margin-top: 10px; }
+      .step { grid-template-columns: 26px 1fr; gap: 7px; }
+      .step-num { width: 26px; height: 26px; }
+      .step p { font-size: 7.2pt; }
+      .portal-content, .progress-card { padding: 10px; }
+      .portal-action { padding: 7px; font-size: 7pt; }
+      .ops-grid { gap: 8px; }
+      .ops-card { padding: 12px; }
+      .ops-card > p { margin-bottom: 6px; font-size: 7.2pt; }
+      .mini-bars { height: 72px; padding-top: 6px; }
+      .metric-line { padding: 5px 0; font-size: 7.2pt; }
+      .flow { margin-top: 8px; }
+      .role-board { grid-template-columns: .9fr 1.1fr; gap: 10px; padding: 12px; }
+      .role-stack { gap: 4px; }
+      .role { padding: 6px; font-size: 6.8pt; }
+      .guardrails { gap: 5px; }
+      .guardrail { padding: 8px; font-size: 6.8pt; }
+      .mode-wrap { display: grid; grid-template-columns: 1fr 1fr; }
+      .mode-header { grid-column: 1 / -1; padding: 12px; }
+      .mode-panel, [data-mode-panel][hidden] { display: block; padding: 10px; }
+      .mode-summary { padding: 12px; }
+      .mode-summary h3 { margin: 4px 0; font-size: 11pt; }
+      .mode-summary p { margin-bottom: 5px; font-size: 7pt; }
+      .tier-list { gap: 4px; margin-top: 7px; }
+      .tier { padding: 5px 6px; font-size: 6.8pt; }
+      .mode-details { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 7px; }
+      .mode-detail { padding: 7px; }
+      .mode-detail span { font-size: 6.5pt; }
+      .closing-card { padding: 18px; box-shadow: none; }
     }
   </style>
 </head>
