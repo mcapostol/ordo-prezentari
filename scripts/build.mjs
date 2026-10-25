@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
@@ -9,7 +9,12 @@ const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8'
 if (git('status', '--porcelain')) throw new Error('Build requires a clean committed source tree.');
 const sourceSha = git('rev-parse', 'HEAD');
 if (!/^[a-f0-9]{40}$/.test(sourceSha)) throw new Error('A canonical source commit is required.');
-const files = ['index.html', 'salons.html', 'clubs.html'];
+const allowed = ['index.html', 'salons.html', 'clubs.html', 'rezidential.html', 'administratii.html', 'farm.html'];
+const present = new Set(await readdir(root));
+const files = allowed.filter(name => present.has(name));
+for (const name of ['index.html', 'salons.html', 'clubs.html']) {
+  if (!files.includes(name)) throw new Error(`Missing core source: ${name}`);
+}
 const manifest = { kind: 'local-concept-presentations', source_sha: sourceSha, publication: 'none', files: {} };
 await mkdir(join(root, 'dist'), { recursive: true });
 for (const name of files) {

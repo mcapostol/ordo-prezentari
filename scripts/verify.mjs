@@ -2,6 +2,7 @@
 
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -12,14 +13,13 @@ const outputs = path.join(root, 'outputs');
 const reportPath = path.join(outputs, 'local-acceptance-report.json');
 const playwrightModule = process.env.PLAYWRIGHT_MODULE
   || '/home/capostol/clarified-social-publisher/management_clinica/carevia/node_modules/@playwright/test/index.mjs';
-const pages = [
-  { key: 'index', file: 'index.html', kind: 'index' },
-  {
-    key: 'salons', file: 'salons.html', kind: 'product', brand: 'OrdoSalons', pdf: 'OrdoSalons.pdf',
-  },
-  {
-    key: 'clubs', file: 'clubs.html', kind: 'product', brand: 'OrdoClubs', pdf: 'OrdoClubs.pdf',
-  },
+const indexPage = { key: 'index', file: 'index.html', kind: 'index' };
+const productCatalog = [
+  { key: 'salons', file: 'salons.html', kind: 'product', brand: 'OrdoSalons', pdf: 'OrdoSalons.pdf', persistMode: true },
+  { key: 'clubs', file: 'clubs.html', kind: 'product', brand: 'OrdoClubs', pdf: 'OrdoClubs.pdf', persistMode: true },
+  { key: 'rezidential', file: 'rezidential.html', kind: 'product', brand: 'OrdoRezidential', pdf: 'OrdoRezidential.pdf', persistMode: true },
+  { key: 'administratii', file: 'administratii.html', kind: 'product', brand: 'OrdoAdministratii', pdf: 'OrdoAdministratii.pdf', persistMode: true },
+  { key: 'farm', file: 'farm.html', kind: 'product', brand: 'OrdoFarm', pdf: 'OrdoFarm.pdf', persistMode: true },
 ];
 const viewports = [
   { key: 'desktop', width: 1440, height: 1000, screenshot: true },
@@ -35,9 +35,37 @@ const report = {
   finishedAt: null,
   sourceCommit: null,
   distManifest: null,
+  productSelection: null,
+  products: [],
   checks: [],
   artifacts: [],
 };
+
+function parseArguments(argv) {
+  let requested = null;
+  for (let index = 0; index < argv.length; index += 1) {
+    const argument = argv[index];
+    if (argument === '--help' || argument === '-h') return { help: true, requested: null };
+    if (argument.startsWith('--products=')) requested = argument.slice('--products='.length);
+    else if (argument === '--products') requested = argv[++index];
+    else throw new Error(`Argument necunoscut: ${argument}`);
+  }
+  if (requested === null) return { help: false, requested: null };
+  const keys = [...new Set(String(requested).split(',').map((value) => value.trim()).filter(Boolean))];
+  assert.ok(keys.length > 0, '--products trebuie să conțină cel puțin un produs.');
+  for (const key of keys) assert.ok(productCatalog.some((product) => product.key === key), `Produs necunoscut în --products: ${key}`);
+  return { help: false, requested: keys };
+}
+
+const cli = parseArguments(process.argv.slice(2));
+if (cli.help) {
+  console.log([
+    'Utilizare: node scripts/verify.mjs [--products=salons,clubs,rezidential,administratii,farm]',
+    '',
+    'Fără --products, lista se deduce din paginile declarate în dist/manifest.json.',
+  ].join('\n'));
+  process.exit(0);
+}
 
 function safeError(error) {
   return (error instanceof Error ? error.message : String(error)).slice(0, 1_000);
@@ -81,6 +109,21 @@ async function manifestWithSourceSha() {
     }
   }
   throw new Error('Lipsește dist/manifest.json sau dist/build-manifest.json cu proprietatea source_sha.');
+}
+
+async function validateManifestFiles(manifest) {
+  assert.ok(manifest.files && typeof manifest.files === 'object' && !Array.isArray(manifest.files),
+    'Manifestul trebuie să declare obiectul files cu hashurile artefactelor.');
+  const validated = [];
+  for (const [filename, evidence] of Object.entries(manifest.files)) {
+    assert.equal(filename, path.basename(filename), `Cale nepermisă în manifest: ${filename}`);
+    assert.match(evidence?.sha256 || '', /^[0-9a-f]{64}$/, `${filename}: hash SHA-256 invalid în manifest.`);
+    const contents = await readFile(await requiredFile(filename));
+    assert.equal(createHash('sha256').update(contents).digest('hex'), evidence.sha256, `${filename}: hashul nu corespunde manifestului.`);
+    if (Number.isInteger(evidence.bytes)) assert.equal(contents.length, evidence.bytes, `${filename}: dimensiunea nu corespunde manifestului.`);
+    validated.push(filename);
+  }
+  return validated;
 }
 
 function normalize(value) {
@@ -161,7 +204,7 @@ async function assertSafeLocalDocument(page, pageFile) {
   assert.equal(structure.unsafeSvg.length, 0, `${pageFile}: SVG inline nesigur.`);
 
   for (const href of structure.links) {
-    assert.ok(/^#[A-Za-z][\w:.-]*$/.test(href) || /^(?:\.\/)?(?:index|salons|clubs)\.html(?:#[A-Za-z][\w:.-]*)?$/.test(href),
+    assert.ok(/^#[A-Za-z][\w:.-]*$/.test(href) || /^(?:\.\/)?(?:index|salons|clubs|rezidential|administratii|farm)\.html(?:#[A-Za-z][\w:.-]*)?$/.test(href),
       `${pageFile}: link-ul nu este fragment local sau pagină HTML soră: ${href}`);
     if (href.startsWith('#')) {
       const target = await page.locator(href).count().catch(() => 0);
@@ -188,7 +231,7 @@ async function assertRequiredProductContent(page, pageFile) {
     ['Powered by Clarified', /powered by clarified/],
     ['financiar', /financ/],
     ['stocuri sau inventar', /stoc|inventar/],
-    ['mai multe sedii', /multi[ -]?(?:sedi|locatie)|mai multe sedii|retea/],
+    ['mai multe sedii', /multi[ -]?(?:sedi|locatie)|mai multe sedii|retea|portofoliu|asociatii|complexuri/],
     ['comunicare', /comunic|sms|whatsapp/],
     ['Microsoft 365', /m365|microsoft 365/],
     ['Concept de produs', /concept de produs/],
@@ -223,6 +266,20 @@ async function assertDeploymentControls(page, pageFile) {
   return { modes: ['saas', 'onprem'], ariaPressed: true, selectedPanelOnly: true };
 }
 
+async function assertModePersistence(page, config) {
+  if (!config.persistMode) return { persistenceRequired: false };
+  await page.locator('[data-mode="onprem"]').click();
+  await page.reload({ waitUntil: 'load' });
+  assert.equal(await page.locator('[data-mode="onprem"]').getAttribute('aria-pressed'), 'true',
+    `${config.file}: modul On-Premise nu a persistat după reload.`);
+  assert.equal(await page.locator('[data-mode-panel="onprem"]').isVisible(), true,
+    `${config.file}: panoul On-Premise persistent nu este vizibil.`);
+  assert.equal(await page.locator('[data-mode-panel="saas"]').isVisible(), false,
+    `${config.file}: panoul SaaS este vizibil după restaurarea modului On-Premise.`);
+  await page.locator('[data-mode="saas"]').click();
+  return { persistenceRequired: true, persistedMode: 'onprem', resetMode: 'saas' };
+}
+
 async function assertFixedBrand(page, config) {
   assert.ok((await page.title()).includes(config.brand), `${config.file}: titlul documentului nu include ${config.brand}.`);
   const headerText = await page.locator('header').first().innerText();
@@ -231,13 +288,16 @@ async function assertFixedBrand(page, config) {
   return { brand: config.brand, title: true, header: true, namePicker: false };
 }
 
-async function verifyIndex(page) {
+async function verifyIndex(page, selectedProducts) {
   const text = await page.locator('body').innerText();
-  for (const name of ['OrdoSalons', 'OrdoClubs']) assert.match(text, new RegExp(name));
   const links = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute('href')));
-  assert.ok(links.some((href) => /^(?:\.\/)?salons\.html(?:#.*)?$/.test(href)), 'index.html: lipsește link-ul către salons.html.');
-  assert.ok(links.some((href) => /^(?:\.\/)?clubs\.html(?:#.*)?$/.test(href)), 'index.html: lipsește link-ul către clubs.html.');
-  return { productNames: ['OrdoSalons', 'OrdoClubs'], siblingLinks: true };
+  for (const product of selectedProducts) {
+    assert.match(text, new RegExp(product.brand), `index.html: lipsește numele ${product.brand}.`);
+    const escapedFile = product.file.replace('.', '\\.');
+    assert.ok(links.some((href) => new RegExp(`^(?:\\./)?${escapedFile}(?:#.*)?$`).test(href)),
+      `index.html: lipsește link-ul către ${product.file}.`);
+  }
+  return { productNames: selectedProducts.map((product) => product.brand), siblingLinks: true };
 }
 
 function pdfPageCount(buffer) {
@@ -245,18 +305,36 @@ function pdfPageCount(buffer) {
 }
 
 let browser;
+let selectedProducts = [];
+let pages = [];
 try {
   await mkdir(outputs, { recursive: true });
   await check('Buildul provine din commitul canonic curat și manifestul are același SHA', async () => {
     const sourceCommit = git('rev-parse', 'HEAD');
     assert.match(sourceCommit, /^[0-9a-f]{40}$/);
     assert.equal(git('status', '--porcelain', '--untracked-files=no'), '', 'Working tree-ul urmărit de Git nu este curat.');
-    for (const page of pages) await requiredFile(page.file);
     const manifest = await manifestWithSourceSha();
     assert.equal(manifest.parsed.source_sha, sourceCommit, 'source_sha din manifest nu corespunde commitului curent.');
+    const hashedFiles = await validateManifestFiles(manifest.parsed);
+    assert.ok(manifest.parsed.files['index.html'], 'Manifestul nu declară index.html.');
+    if (cli.requested) {
+      selectedProducts = cli.requested.map((key) => productCatalog.find((product) => product.key === key));
+      for (const product of selectedProducts) assert.ok(manifest.parsed.files[product.file], `Produsul cerut ${product.key} lipsește din manifest.`);
+      report.productSelection = 'cli';
+    } else {
+      selectedProducts = productCatalog.filter((product) => manifest.parsed.files[product.file]);
+      assert.ok(selectedProducts.length > 0, 'Manifestul nu conține nicio prezentare de produs cunoscută.');
+      report.productSelection = 'manifest';
+    }
+    pages = [indexPage, ...selectedProducts];
+    for (const page of pages) await requiredFile(page.file);
     report.sourceCommit = sourceCommit;
     report.distManifest = manifest.filename;
-    return { sourceCommit, manifest: `dist/${manifest.filename}`, pages: pages.map((page) => `dist/${page.file}`) };
+    report.products = selectedProducts.map((product) => product.key);
+    return {
+      sourceCommit, manifest: `dist/${manifest.filename}`, selection: report.productSelection,
+      products: report.products, pages: pages.map((page) => `dist/${page.file}`), hashedFiles,
+    };
   });
 
   const moduleUrl = playwrightModule.startsWith('file:') ? playwrightModule : pathToFileURL(path.resolve(playwrightModule)).href;
@@ -276,11 +354,13 @@ try {
           const metrics = await assertNoOverflow(page, `${config.file} ${viewport.width}px`);
           let contract;
           if (config.kind === 'index') {
-            contract = await verifyIndex(page);
+            contract = await verifyIndex(page, selectedProducts);
           } else {
             await assertRequiredProductContent(page, config.file);
             await assertDeploymentControls(page, config.file);
-            contract = await assertFixedBrand(page, config);
+            const brand = await assertFixedBrand(page, config);
+            const persistence = viewport.key === 'desktop' ? await assertModePersistence(page, config) : { persistenceRequired: config.persistMode };
+            contract = { ...brand, ...persistence };
           }
           assertCleanOffline(state, `${config.file} ${viewport.width}px`);
           if (viewport.screenshot) {
@@ -295,7 +375,7 @@ try {
             await page.emulateMedia({ media: 'screen' });
             const pdf = await readFile(path.join(outputs, pdfName));
             const pageCount = pdfPageCount(pdf);
-            assert.ok(pageCount > 0, `${config.file}: PDF-ul nu conține pagini detectabile.`);
+            assert.ok(pageCount >= 3 && pageCount <= 7, `${config.file}: PDF-ul are ${pageCount} pagini; intervalul acceptat este 3–7.`);
             report.artifacts.push({ type: 'pdf', page: config.file, brand: config.brand, pageCount, file: `outputs/${pdfName}` });
           }
           return { ...local, ...metrics, ...contract };

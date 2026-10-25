@@ -1,6 +1,6 @@
 # Local product presentations
 
-- User selected OrdoSalons and OrdoClubs.
+- User selected OrdoSalons, OrdoClubs, OrdoRezidential, OrdoAdministratii and OrdoFarm.
 - Scope is concept presentations, not production applications.
 - Do not provision, deploy, publish, or modify Azure, Stripe, OrdoClinics, or existing client data.
 - Keep each HTML presentation standalone and usable offline; no external asset requests or live integrations.
