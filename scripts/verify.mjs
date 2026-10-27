@@ -116,7 +116,7 @@ async function validateManifestFiles(manifest) {
     'Manifestul trebuie să declare obiectul files cu hashurile artefactelor.');
   const validated = [];
   for (const [filename, evidence] of Object.entries(manifest.files)) {
-    assert.equal(filename, path.basename(filename), `Cale nepermisă în manifest: ${filename}`);
+    assert.ok(!path.isAbsolute(filename) && !filename.split('/').some(part => !part || part === '..' || part === '.') && filename.endsWith('.html'), `Cale nepermisă în manifest: ${filename}`);
     assert.match(evidence?.sha256 || '', /^[0-9a-f]{64}$/, `${filename}: hash SHA-256 invalid în manifest.`);
     const contents = await readFile(await requiredFile(filename));
     assert.equal(createHash('sha256').update(contents).digest('hex'), evidence.sha256, `${filename}: hashul nu corespunde manifestului.`);

@@ -20,7 +20,7 @@ const products = [
   { key: 'administratii', file: 'administratii.html', brand: 'OrdoAdministratii' },
   { key: 'farm', file: 'farm.html', brand: 'OrdoFarm' },
 ];
-const expectedHtml = ['index.html', ...products.map((product) => product.file)];
+const expectedHtml = ['index.html', ...products.map((product) => product.file), 'clinics/index.html', 'clinics/demo/index.html'];
 const started = Date.now();
 
 function argumentsFrom(argv) {
@@ -245,7 +245,7 @@ try {
     const verified = [];
     for (const [filename, evidence] of Object.entries(localManifest.files)) {
       if (!/\.(?:html|pdf)$/i.test(filename)) continue;
-      assert.equal(filename, path.basename(filename), `Cale nepermisă în manifest: ${filename}`);
+      assert.ok(!path.isAbsolute(filename) && !filename.split('/').some(part => !part || part === '..' || part === '.') && filename.endsWith('.html'), `Cale nepermisă în manifest: ${filename}`);
       assert.match(evidence?.sha256 || '', /^[0-9a-f]{64}$/);
       const localBytes = await readFile(path.join(dist, filename));
       assert.equal(digest(localBytes), evidence.sha256, `${filename}: hash local diferit de manifest.`);
