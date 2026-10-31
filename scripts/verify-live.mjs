@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -20,7 +20,8 @@ const products = [
   { key: 'administratii', file: 'administratii.html', brand: 'OrdoAdministratii' },
   { key: 'farm', file: 'farm.html', brand: 'OrdoFarm' },
 ];
-const expectedHtml = ['index.html', ...products.map((product) => product.file), 'clinics/index.html', 'clinics/demo/index.html'];
+const expectedHtml = ['index.html', ...products.map((product) => product.file)];
+const retiredRoutes = ['clinics/', 'clinics/index.html', 'clinics/demo/', 'clinics/demo/index.html'];
 const started = Date.now();
 
 function argumentsFrom(argv) {
@@ -125,6 +126,40 @@ async function fetchPublished(relative, expectedPath = new URL(relative, base).p
     return { response, finalUrl: current, redirects };
   }
   throw new Error(`${requested.pathname}: prea multe redirecturi.`);
+}
+
+async function fetchRetired(relative) {
+  const requested = new URL(relative, base);
+  assert.ok(withinPublishedRoot(requested), `Calea retrasă iese din rădăcina configurată: ${requested.pathname}`);
+  let current = requested;
+  const redirects = [];
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    const response = await fetch(current, { redirect: 'manual', signal: AbortSignal.timeout(10_000) });
+    if (response.status >= 300 && response.status < 400) {
+      const location = response.headers.get('location');
+      assert.ok(location, `${current.pathname}: redirect fără Location.`);
+      const next = new URL(location, current);
+      assert.ok(withinPublishedRoot(next), `${current.pathname}: redirect în afara originii sau prefixului public.`);
+      redirects.push({ from: current.pathname, to: next.pathname, status: response.status });
+      current = next;
+      continue;
+    }
+    assert.equal(response.status, 404, `${current.pathname}: status HTTP ${response.status}, așteptat 404.`);
+    assert.equal(current.protocol, 'https:');
+    assert.equal(current.origin, base.origin);
+    return { finalUrl: current.href, redirects };
+  }
+  throw new Error(`${requested.pathname}: prea multe redirecturi.`);
+}
+
+async function isPresent(file) {
+  try {
+    await stat(file);
+    return true;
+  } catch (error) {
+    if (error?.code === 'ENOENT') return false;
+    throw error;
+  }
 }
 
 function monitorPage(page, existingState) {
@@ -239,7 +274,10 @@ try {
     const manifestFetch = await fetchPublished('manifest.json');
     const liveManifest = JSON.parse(Buffer.from(await manifestFetch.response.arrayBuffer()).toString('utf8'));
     assert.equal(liveManifest.source_sha, head, 'Manifestul public nu corespunde HEAD.');
-    assert.deepEqual(liveManifest.files, localManifest.files, 'Lista sau hashurile manifestului public diferă de buildul local.');
+    assert.deepEqual(liveManifest, localManifest, 'Manifestul public diferă de buildul local.');
+    assert.deepEqual(Object.keys(localManifest.files || {}).sort(), [...expectedHtml].sort(), 'Manifestul trebuie să conțină numai cele șase prezentări publice active.');
+    assert.deepEqual([...(localManifest.retired_routes || [])].sort(), [...retiredRoutes].sort(), 'Manifestul nu declară exact rutele OrdoClinics retrase.');
+    assert.equal(await isPresent(path.join(dist, 'clinics')), false, 'Directorul dist/clinics trebuie să lipsească.');
     for (const filename of expectedHtml) assert.ok(localManifest.files?.[filename], `Manifestul nu declară ${filename}.`);
 
     const verified = [];
@@ -261,8 +299,10 @@ try {
     const portfolio = await fetchPublished('', base.pathname);
     const portfolioBytes = Buffer.from(await portfolio.response.arrayBuffer());
     assert.equal(digest(portfolioBytes), localManifest.files['index.html'].sha256, 'Portofoliul de la BASE_URL nu este index.html canonic.');
+    const retired = [];
+    for (const route of retiredRoutes) retired.push({ route, ...(await fetchRetired(route)) });
     report.sourceCommit = head;
-    return { sourceCommit: head, manifestRedirects: manifestFetch.redirects.length, verified, portfolioRedirects: portfolio.redirects.length };
+    return { sourceCommit: head, manifestRedirects: manifestFetch.redirects.length, verified, retired, portfolioRedirects: portfolio.redirects.length };
   });
 
   const moduleUrl = playwrightModule.startsWith('file:') ? playwrightModule : pathToFileURL(path.resolve(playwrightModule)).href;
